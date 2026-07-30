@@ -157,11 +157,10 @@
   .proof-lead{text-align:center;color:var(--body);font-size:15px;max-width:560px;margin:14px auto 0}
   .proof-lead b{color:var(--blue-label);font-weight:700}
   .job-wall{column-count:3;column-gap:14px;margin-top:30px;max-width:900px;margin-left:auto;margin-right:auto}
-  .job{break-inside:avoid;margin:0 0 14px;border-radius:12px;overflow:hidden;border:1px solid var(--line-strong);background:var(--card)}
+  .job{position:relative;break-inside:avoid;margin:0 0 14px;border-radius:12px;overflow:hidden;border:1px solid var(--line-strong);background:#000}
   .job img{width:100%;display:block}
-  .job figcaption{padding:10px 12px;font-size:12.5px;color:var(--sub);font-weight:600;line-height:1.3}
-  .job figcaption b{font-family:var(--font-head);font-weight:700;color:var(--blue-label);font-size:17px;margin-right:5px;letter-spacing:.01em}
-  .masonry .job{background:#000}
+  .job .val{position:absolute;top:9px;left:9px;z-index:2;background:#16C047;color:#fff;font-family:var(--font-head);font-weight:700;font-size:15px;line-height:1;padding:7px 10px 6px;border-radius:9px;box-shadow:0 7px 20px rgba(0,0,0,.55)}
+  .job .val small{display:block;font-family:var(--font-sans);font-weight:600;font-size:9px;letter-spacing:.05em;text-transform:uppercase;opacity:.95;margin-top:2px}
   .proof-note{text-align:center;margin-top:26px;font-size:12.5px;color:var(--sub)}
 
   /* ---------- closing CTA ---------- */
@@ -320,44 +319,28 @@
   </div>
 </section>
 
-<!-- ============ THE JOBS OUR CLIENTS ARE WINNING ============ -->
+<!-- ============ THE WORK OUR CONTENT BRINGS IN ============ -->
 <section style="padding-top:34px;padding-bottom:34px">
   <div class="wrap">
     <span class="kicker">Real work</span>
-    <h2 class="disp">The jobs our clients are winning</h2>
-    <p class="proof-lead">Real projects our clients booked from the content we made. One went from <b>$2M to $6M</b> in a single year.</p>
+    <h2 class="disp">The work our content brings in</h2>
+    <p class="proof-lead">Real jobs our clients built and real requests coming in.</p>
     <div class="job-wall">
-      <figure class="job"><img src="img/opt/job-1.jpg" alt="Waterfront estate with pool, sport court, and full landscaping"><figcaption><b>$175,000</b> outdoor living space</figcaption></figure>
-      <figure class="job"><img src="img/opt/job-2.jpg" alt="Modern kitchen with large waterfall island"><figcaption><b>$95,000</b> kitchen remodel</figcaption></figure>
-      <figure class="job"><img src="img/opt/job-3.jpg" alt="Master bathroom with floating double vanity"><figcaption><b>$38,000</b> bathroom remodel</figcaption></figure>
-      <figure class="job"><img src="img/opt/job-6.jpg" alt="Finished basement home theater"><figcaption><b>$85,000</b> basement finish</figcaption></figure>
-      <figure class="job"><img src="img/opt/job-4.jpg" alt="Two-level wraparound cedar deck with cable railing"><figcaption><b>$38,000</b> deck build</figcaption></figure>
-      <figure class="job"><img src="img/opt/job-10.jpg" alt="Outdoor kitchen and bar on paver patio"><figcaption><b>$65,000</b> outdoor living space</figcaption></figure>
-      <figure class="job"><img src="img/opt/job-7.jpg" alt="Maple kitchen with white quartz island"><figcaption><b>$85,000</b> kitchen remodel</figcaption></figure>
-      <figure class="job"><img src="img/opt/job-17.jpg" alt="Curved paver walkway with fresh sod, lakefront backyard"><figcaption><b>$85,000</b> landscaping job</figcaption></figure>
-      <figure class="job"><img src="img/opt/job-11.jpg" alt="Basement wet bar with dark cabinets and quartz"><figcaption><b>$70,000</b> basement finish</figcaption></figure>
+      <figure class="job"><span class="val">$250,000<small>outdoor living</small></span><img src="img/opt/job-1.jpg" alt="Waterfront estate with pool, sport courts and full landscaping"></figure>
+      <figure class="job"><span class="val">$130,000<small>basement finish</small></span><img src="img/opt/lead-8.jpg" alt="Estimate request: 2,200 sqft basement, theater, wet bar, walkout"></figure>
+      <figure class="job"><span class="val">$110,000<small>outdoor living</small></span><img src="img/opt/job-17.jpg" alt="Large backyard with paver patios, walkways, sod and firepit, lakefront"></figure>
+      <figure class="job"><span class="val">$95,000<small>landscaping job</small></span><img src="img/opt/lead-4.jpg" alt="Estimate request: pickleball court, curbing, lawn, fencing"></figure>
+      <figure class="job"><span class="val">$95,000<small>outdoor living</small></span><img src="img/opt/job-5.jpg" alt="Putting green and sport court with mountain view"></figure>
+      <figure class="job"><span class="val">$85,000<small>landscaping job</small></span><img src="img/opt/lead-3.jpg" alt="Estimate request: dirt lot fully landscaped, sport court, sod"></figure>
+      <figure class="job"><span class="val">$70,000<small>outdoor living</small></span><img src="img/opt/lead-5.jpg" alt="Estimate request: trampoline, concrete patio and pavilion"></figure>
+      <figure class="job"><span class="val">$65,000<small>outdoor living</small></span><img src="img/opt/job-10.jpg" alt="Outdoor kitchen and bar on paver patio"></figure>
+      <figure class="job"><span class="val">$50,000<small>outdoor living</small></span><img src="img/opt/job-14.jpg" alt="Sunken firepit lounge with stone seating walls and lawn"></figure>
+      <figure class="job"><span class="val">$45,000<small>retaining wall</small></span><img src="img/opt/lead-2.jpg" alt="Estimate request: hill, living retaining wall and stairs"></figure>
+      <figure class="job"><span class="val">$40,000<small>grading &amp; walls</small></span><img src="img/opt/lead-11.jpg" alt="Estimate request: leveling, 2 retaining walls and dirt removal"></figure>
+      <figure class="job"><span class="val">$40,000<small>landscaping job</small></span><img src="img/opt/lead-1.jpg" alt="Estimate request: two homes, $20,000+ budgets"></figure>
+      <figure class="job"><span class="val">$35,000<small>landscaping job</small></span><img src="img/opt/lead-6.jpg" alt="Estimate request: new home, sides and back finished"></figure>
     </div>
-    <p class="proof-note">Real client projects. Job values are estimates for illustration.</p>
-    <div class="cta-mid"><a href="#book" class="btn">Book my call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-  </div>
-</section>
-
-<!-- ============ LEAD WALL ============ -->
-<section style="padding-top:34px">
-  <div class="wrap">
-    <h2 class="disp">Estimate requests from content</h2>
-    <p class="proof-lead">One client got <b>595 requests in 90 days</b>. Here's the kind of work that comes in.</p>
-    <div class="masonry">
-      <figure class="job"><img src="img/opt/lead-3.jpg" alt="Estimate request: dirt lot fully landscaped, fencing, patio, sport court, sod"><figcaption><b>$85,000</b> landscaping job</figcaption></figure>
-      <figure class="job"><img src="img/opt/lead-8.jpg" alt="Estimate request: 2,200 sqft basement, theater room, wet bar, walkout"><figcaption><b>$130,000</b> basement finish</figcaption></figure>
-      <figure class="job"><img src="img/opt/lead-4.jpg" alt="Estimate request: new Mapleton home, pickleball court, curbing, lawn"><figcaption><b>$95,000</b> landscaping job</figcaption></figure>
-      <figure class="job"><img src="img/opt/lead-1.jpg" alt="Estimate request: two homes, $20,000+ budgets for both"><figcaption><b>$40,000</b> landscaping job</figcaption></figure>
-      <figure class="job"><img src="img/opt/lead-5.jpg" alt="Estimate request: grass, inground trampoline, concrete patio and pavilion"><figcaption><b>$70,000</b> outdoor living space</figcaption></figure>
-      <figure class="job"><img src="img/opt/lead-2.jpg" alt="Estimate request: hill, living retaining wall and stairs"><figcaption><b>$45,000</b> retaining wall job</figcaption></figure>
-      <figure class="job"><img src="img/opt/lead-11.jpg" alt="Estimate request: leveling backyard, 2 retaining walls and dirt removal"><figcaption><b>$40,000</b> grading &amp; walls</figcaption></figure>
-      <figure class="job"><img src="img/opt/lead-6.jpg" alt="Estimate request: moved into new home, wants sides and back finished"><figcaption><b>$35,000</b> landscaping job</figcaption></figure>
-    </div>
-    <p class="proof-note">Real inbound requests from live campaigns. Job values are estimates. Contact details cropped for privacy.</p>
+    <p class="proof-note">Real client projects and inbound requests. Job values are estimates.</p>
     <div class="cta-mid"><a href="#book" class="btn">Book my call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
 </section>
