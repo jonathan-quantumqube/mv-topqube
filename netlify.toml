@@ -1,0 +1,13 @@
+# mv.topqube.com — static site, no build step. Repo root IS the published site.
+# _redirects, _headers, robots.txt, 404.html (if present) are auto-detected by Netlify.
+[build]
+  publish = "."
+  command = ""
+
+# Whole site is a private funnel page — keep it out of search indexes.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Robots-Tag = "noindex, nofollow"
