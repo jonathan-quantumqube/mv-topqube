@@ -243,8 +243,25 @@
   .video-embed iframe,.video-embed video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
   .qcard .video-embed{aspect-ratio:16/9;max-width:none;margin:0;border:0;border-radius:0;border-bottom:1px solid var(--line);box-shadow:none}
 
+  /* click-to-expand overlay (opens the lightbox) */
+  .video-expand{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;margin:0;cursor:pointer;background:rgba(6,9,14,.20);display:grid;place-items:center;transition:background .2s}
+  .video-expand:hover{background:rgba(6,9,14,.36)}
+  .video-expand .vpc{width:54px;height:54px;border-radius:50%;background:linear-gradient(180deg,#3a78ff,#155eef);display:grid;place-items:center;box-shadow:0 14px 34px -8px rgba(21,94,239,.8);transition:transform .18s}
+  .video-expand:hover .vpc{transform:scale(1.09)}
+  .video-expand .vpc svg{width:22px;height:22px;fill:#fff;margin-left:3px}
+  .video-embed--main .video-expand .vpc{width:66px;height:66px}
+  .video-embed--main .video-expand .vpc svg{width:27px;height:27px}
+
+  /* video lightbox */
+  .vmodal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(6,9,14,.9);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  .vmodal.open{display:flex}
+  .vmodal__inner{position:relative;width:100%;max-width:1040px;aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 40px 120px -20px rgba(0,0,0,.9)}
+  .vmodal__inner iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .vmodal__close{position:absolute;top:18px;right:22px;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.14);color:#fff;font-size:18px;line-height:1;display:grid;place-items:center;transition:background .2s}
+  .vmodal__close:hover{background:rgba(255,255,255,.28)}
+
   /* question grid (video FAQ) */
-  .qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+  .qgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:980px;margin:34px auto 0}
   .qcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
   .qcard .video-ph{aspect-ratio:16/9;border:0;border-radius:0;border-bottom:1px solid var(--line)}
   .qcard .video-ph .play{width:44px;height:44px}
@@ -267,10 +284,12 @@
   .job figcaption b{font-family:var(--font-head);font-weight:700;color:var(--white);font-size:17px;margin-right:5px;letter-spacing:.01em}
 
   @media (max-width:760px){
-    .qgrid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
+    .qgrid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}
     .job-wall{column-count:2;column-gap:10px}
     .job{margin-bottom:10px}
     .steps{flex-direction:column;align-items:flex-start;max-width:320px}
+    .vmodal{padding:12px}
+    .vmodal__close{top:14px;right:14px;width:40px;height:40px}
   }
 
 </style>
@@ -279,11 +298,12 @@
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span>Before your call</span>
+    <span class="important"><span class="dot"></span>Do this before our call</span>
     <h1>Do Your Research<br>Before <span class="hl">We Talk</span></h1>
-    <p class="subhead">Watch the videos below so your questions are answered before we get on the call.</p>
-    <div class="video-embed video-embed--main">
+    <p class="subhead">Take a few minutes now and watch these. It's the difference between a good call and a great one.</p>
+    <div class="video-embed video-embed--main" data-loom="bb79d9bca6a942f9a4a9953266906cc3">
       <iframe src="https://www.loom.com/embed/bb79d9bca6a942f9a4a9953266906cc3?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="Watch this first" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      <button class="video-expand" type="button" aria-label="Play video: Watch this first"><span class="vpc"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
     </div>
     <div class="steps">
       <div class="step"><b>1</b> Watch the videos</div>
@@ -300,28 +320,46 @@
     <h2 class="disp">Get your questions answered</h2>
     <div class="qgrid">
       <div class="qcard">
-        <div class="video-embed"><iframe src="https://www.loom.com/embed/31972b98991b4908b34dfbefc68152d5?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="Is this a bad fit for you?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-        <div class="qcard__body"><p class="qcard__q">Is this a bad fit for you?</p><p class="qcard__a">We're not for everyone. The video covers exactly who this isn't a fit for.</p></div>
-      </div>
-      <div class="qcard">
-        <div class="video-embed"><iframe src="https://www.loom.com/embed/1e5aeef0d7f24767859680630ae11dbc?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="What do you expect from me?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-        <div class="qcard__body"><p class="qcard__q">What do you expect from me?</p><p class="qcard__a">Mostly just a 3-hour shoot every 3 months. The video covers the rest.</p></div>
-      </div>
-      <div class="qcard">
-        <div class="video-embed"><iframe src="https://www.loom.com/embed/055a61825f7b4f4bbd7f926a82e2651c?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="How much does it cost?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-        <div class="qcard__body"><p class="qcard__q">How much does it cost?</p><p class="qcard__a">Straight numbers in the video. It's built for companies already doing a million a year or more.</p></div>
-      </div>
-      <div class="qcard">
-        <div class="video-embed"><iframe src="https://www.loom.com/embed/de021b5bbc7a49beaa85deb1890af822?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="What if it doesn't work?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-        <div class="qcard__body"><p class="qcard__q">What if it doesn't work?</p><p class="qcard__a">A million views in 90 days, or we work free until you get there.</p></div>
-      </div>
-      <div class="qcard">
-        <div class="video-embed"><iframe src="https://www.loom.com/embed/711d3efd686e4afa98ee3e76f850145f?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="What happens once we start?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-embed" data-loom="711d3efd686e4afa98ee3e76f850145f">
+          <iframe src="https://www.loom.com/embed/711d3efd686e4afa98ee3e76f850145f?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="What happens once we start?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <button class="video-expand" type="button" aria-label="Play video: What happens once we start?"><span class="vpc"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+        </div>
         <div class="qcard__body"><p class="qcard__q">What happens once we start?</p><p class="qcard__a">The first few weeks step by step, and when results usually start showing up.</p></div>
       </div>
       <div class="qcard">
-        <div class="video-embed"><iframe src="https://www.loom.com/embed/c32560015bb2452a8276d1a1d6d9cc6c?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="Does going viral actually pay?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-embed" data-loom="c32560015bb2452a8276d1a1d6d9cc6c">
+          <iframe src="https://www.loom.com/embed/c32560015bb2452a8276d1a1d6d9cc6c?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="Does going viral actually pay?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <button class="video-expand" type="button" aria-label="Play video: Does going viral actually pay?"><span class="vpc"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+        </div>
         <div class="qcard__body"><p class="qcard__q">Does going viral actually pay?</p><p class="qcard__a">Views only count if they turn into jobs. The video shows how that happens.</p></div>
+      </div>
+      <div class="qcard">
+        <div class="video-embed" data-loom="31972b98991b4908b34dfbefc68152d5">
+          <iframe src="https://www.loom.com/embed/31972b98991b4908b34dfbefc68152d5?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="Is this a bad fit for you?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <button class="video-expand" type="button" aria-label="Play video: Is this a bad fit for you?"><span class="vpc"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+        </div>
+        <div class="qcard__body"><p class="qcard__q">Is this a bad fit for you?</p><p class="qcard__a">We're not for everyone. The video covers exactly who this isn't a fit for.</p></div>
+      </div>
+      <div class="qcard">
+        <div class="video-embed" data-loom="1e5aeef0d7f24767859680630ae11dbc">
+          <iframe src="https://www.loom.com/embed/1e5aeef0d7f24767859680630ae11dbc?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="What do you expect from me?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <button class="video-expand" type="button" aria-label="Play video: What do you expect from me?"><span class="vpc"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+        </div>
+        <div class="qcard__body"><p class="qcard__q">What do you expect from me?</p><p class="qcard__a">Mostly just a 3-hour shoot every 3 months. The video covers the rest.</p></div>
+      </div>
+      <div class="qcard">
+        <div class="video-embed" data-loom="055a61825f7b4f4bbd7f926a82e2651c">
+          <iframe src="https://www.loom.com/embed/055a61825f7b4f4bbd7f926a82e2651c?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="How much does it cost?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <button class="video-expand" type="button" aria-label="Play video: How much does it cost?"><span class="vpc"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+        </div>
+        <div class="qcard__body"><p class="qcard__q">How much does it cost?</p><p class="qcard__a">Straight numbers in the video. It's built for companies already doing a million a year or more.</p></div>
+      </div>
+      <div class="qcard">
+        <div class="video-embed" data-loom="de021b5bbc7a49beaa85deb1890af822">
+          <iframe src="https://www.loom.com/embed/de021b5bbc7a49beaa85deb1890af822?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="What if it doesn't work?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <button class="video-expand" type="button" aria-label="Play video: What if it doesn't work?"><span class="vpc"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+        </div>
+        <div class="qcard__body"><p class="qcard__q">What if it doesn't work?</p><p class="qcard__a">A million views in 90 days, or we work free until you get there.</p></div>
       </div>
     </div>
   </div>
@@ -422,9 +460,18 @@
   </div>
 </footer>
 
+<!-- ============ VIDEO LIGHTBOX ============ -->
+<div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="vmodal__close" id="vmodalClose" type="button" aria-label="Close video">&#10005;</button>
+  <div class="vmodal__inner"><iframe id="vmodalFrame" src="" title="Video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+</div>
+
 <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
 <script>
 document.querySelectorAll('.vid[data-ytid]').forEach(function(v){var btn=v.querySelector('.vid-tap');if(!btn)return;btn.addEventListener('click',function(){var id=v.getAttribute('data-ytid');var ifr=v.querySelector('iframe');ifr.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0&autoplay=1&playsinline=0&fs=1';var t=ifr,rf=t.requestFullscreen||t.webkitRequestFullscreen;if(!rf){t=v;rf=v.requestFullscreen||v.webkitRequestFullscreen;}if(rf){try{rf.call(t);}catch(e){}}btn.remove();});});
+</script>
+<script>
+(function(){var m=document.getElementById('vmodal');if(!m)return;var f=document.getElementById('vmodalFrame');var c=document.getElementById('vmodalClose');function openV(id){f.src='https://www.loom.com/embed/'+id+'?autoplay=1&hide_owner=true&hide_share=true&hideEmbedTopBar=true';m.classList.add('open');document.body.style.overflow='hidden';}function closeV(){m.classList.remove('open');f.src='';document.body.style.overflow='';}document.querySelectorAll('.video-expand').forEach(function(b){b.addEventListener('click',function(){var w=b.closest('.video-embed');var id=w&&w.getAttribute('data-loom');if(id)openV(id);});});c.addEventListener('click',closeV);m.addEventListener('click',function(e){if(e.target===m)closeV();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))closeV();});})();
 </script>
 </body>
 </html>
