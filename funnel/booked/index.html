@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're Booked</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --blue:#155eef; --blue-soft:#eaf1ff; --green:#16b45a; --green-soft:#e7f8ee;
+    --ink:#14181f; --sub:#414a58; --line:#e2e6ec; --bg:#ffffff;
+    --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  *{margin:0;box-sizing:border-box}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+  body{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+  a{color:var(--blue)}
+  .prog{position:fixed;top:0;left:0;right:0;height:6px;background:var(--green)}
+  .wrap{width:100%;max-width:560px;margin:0 auto;padding:56px 22px 48px}
+
+  .check{width:76px;height:76px;border-radius:50%;background:var(--green-soft);display:grid;place-items:center;margin:0 auto 24px}
+  .check svg{width:40px;height:40px;stroke:var(--green);stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+  h1{font-size:clamp(28px,6.4vw,36px);line-height:1.12;font-weight:800;letter-spacing:-.02em;text-align:center}
+  .sub{margin-top:14px;font-size:17px;line-height:1.5;color:#20242c;font-weight:500;text-align:center}
+
+  .card{margin-top:30px;border:1px solid var(--line);border-radius:16px;padding:8px 20px}
+  .row{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:0}
+  .num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--blue-soft);color:var(--blue);font-weight:800;font-size:14px;display:grid;place-items:center;font-family:var(--font);margin-top:1px}
+  .row p{font-size:15.5px;line-height:1.5;color:var(--ink)}
+  .row p b{font-weight:700}
+  .row p span{color:var(--sub)}
+
+  .textus{margin-top:28px;text-align:center;font-size:15px;color:var(--sub);line-height:1.6}
+  .textus a{font-weight:700;text-decoration:none}
+  .sig{margin-top:26px;text-align:center;font-size:15.5px;color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+<div class="prog"></div>
+<div class="wrap">
+
+  <div class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+  <h1>You're booked.</h1>
+  <p class="sub">Your application is complete and your call is locked in. Check your email for the invite and calendar link.</p>
+
+  <div class="card">
+    <div class="row"><span class="num">1</span><p><b>Add it to your calendar.</b> <span>The invite is in your inbox. Add it now so it doesn't slip.</span></p></div>
+    <div class="row"><span class="num">2</span><p><b>Come ready to talk shop.</b> <span>It's a quick, no-pressure call to see if we're a good fit and map out how I'd grow your business.</span></p></div>
+    <div class="row"><span class="num">3</span><p><b>Show up on time.</b> <span>If something comes up, use the reschedule link in your email. Please don't just no-show, I hold your spot.</span></p></div>
+  </div>
+
+  <p class="textus">Need to reach me before the call? Text your name and company to<br><a href="sms:+13852360675">+1 (385) 236-0675</a></p>
+  <p class="sig">Talk soon,<br>Jonathan</p>
+
+</div>
+
+<script>
+(function(){
+  var META_PIXEL_ID = ""; // <-- paste the same Meta Pixel ID used on the funnel
+  if (META_PIXEL_ID){
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL_ID); fbq('track','PageView');
+    fbq('track','Schedule'); fbq('trackCustom','BookedCall');
+  }
+})();
+</script>
+</body>
+</html>
