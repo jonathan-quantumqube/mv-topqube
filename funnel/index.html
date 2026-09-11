@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Apply to Work With Jonathan Lindsay</title>
+<title>Apply to Work With Me</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
 <style>
   :root{
     --blue:#155eef; --blue-dark:#0f4bd0; --blue-soft:#eaf1ff;
-    --ink:#14181f; --sub:#5b6472; --line:#e2e6ec; --bg:#ffffff;
+    --ink:#14181f; --sub:#414a58; --line:#e2e6ec; --bg:#ffffff;
     --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   }
   *{margin:0;box-sizing:border-box}
@@ -24,16 +24,17 @@
   .prog{position:fixed;top:0;left:0;right:0;height:4px;background:#eef0f3;z-index:10}
   .prog__fill{height:100%;width:0;background:var(--blue);transition:width .35s ease}
 
-  .wrap{width:100%;max-width:520px;margin:0 auto;padding:64px 22px 48px;flex:1;display:flex;flex-direction:column;justify-content:center}
+  .wrap{width:100%;max-width:780px;margin:0 auto;padding:60px 20px 48px;flex:1;display:flex;flex-direction:column;justify-content:center}
 
   .screen{display:none;animation:fade .35s ease}
+  .screen:not(.final-wrap){max-width:520px;margin-left:auto;margin-right:auto;width:100%}
   .screen.active{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
   h1{font-size:clamp(26px,6vw,33px);line-height:1.12;font-weight:800;letter-spacing:-.02em;text-align:center}
-  .sub{margin-top:16px;font-size:17px;line-height:1.5;color:var(--sub);text-align:center}
+  .sub{margin-top:16px;font-size:18px;line-height:1.5;color:#20242c;font-weight:500;text-align:center}
   .sub b{color:var(--blue);font-weight:800}
-  .note{margin-top:18px;font-size:14.5px;line-height:1.55;color:var(--sub);text-align:center}
+  .note{margin-top:16px;font-size:15.5px;line-height:1.55;color:#333a45;text-align:center}
 
   .q{font-size:clamp(20px,4.6vw,24px);font-weight:700;line-height:1.25;text-align:center;letter-spacing:-.01em}
   .q-sub{margin-top:10px;font-size:15px;color:var(--sub);text-align:center;line-height:1.5}
@@ -42,7 +43,7 @@
   .opts{display:flex;flex-direction:column;gap:11px}
   .opt{width:100%;border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:13px;
     padding:17px 18px;font-family:var(--font);font-size:16.5px;font-weight:600;text-align:left;cursor:pointer;
-    transition:border-color .15s,background .15s,transform .05s;display:flex;align-items:center;justify-content:space-between;gap:10px}
+    transition:border-color .15s,background .15s,transform .05s;display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none}
   .opt:hover{border-color:var(--blue);background:var(--blue-soft)}
   .opt:active{transform:scale(.99)}
   .opt.sel{border-color:var(--blue);background:var(--blue-soft)}
@@ -70,11 +71,16 @@
   .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--blue-soft);color:var(--blue);
     font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:100px;margin:0 auto 18px;
     border:1px solid rgba(21,94,239,.18)}
-  .final-wrap{max-width:720px}
+  .final-wrap{max-width:780px;width:100%}
   .final h1 u{text-decoration-thickness:3px;text-underline-offset:3px}
   .book-card{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px -34px rgba(20,24,31,.4)}
-  .book-frame{padding:8px}
-  .book-frame iframe{width:100%;min-height:640px;border:0;display:block}
+  .book-frame{padding:4px}
+  .book-frame iframe{width:100%;min-height:820px;border:0;display:block}
+  @media (max-width:600px){
+    .book-card{margin-left:-20px;margin-right:-20px;border-radius:0;border-left:0;border-right:0}
+    .book-frame{padding:0}
+    .book-frame iframe{min-height:900px}
+  }
 
   .center{text-align:center}
   .dim{color:var(--sub);font-size:15px;line-height:1.55;margin-top:14px}
@@ -90,9 +96,9 @@
 
   <!-- ============ 1. INTRO + OWNER ============ -->
   <section class="screen active" data-p="15" id="s-intro">
-    <h1>Apply to Work With Jonathan Lindsay</h1>
-    <p class="sub">I have <b id="n1">6</b> clients who are exploding online right now. I'm only taking on <b id="n2">4</b> more at the moment.</p>
-    <p class="note">Every one of my clients works with me directly, and I take care of them personally. That's why I keep it small, and why this is an application. I want to make sure we're actually a good fit before we start.</p>
+    <h1>Apply to Work With Me</h1>
+    <p class="sub">I have <b id="n1">6</b> clients right now. I'm only taking on <b id="n2">4</b> more.</p>
+    <p class="note">Every one of my clients works with me directly, and I take care of their accounts personally. That's why I keep it small, and this is an application.</p>
     <div class="qhead" style="margin-top:34px"><p class="q">Do you own or run a construction company?</p></div>
     <div class="opts">
       <button class="opt" data-go="s-revenue">Yes <span class="arw">&rarr;</span></button>
@@ -170,8 +176,12 @@
   </section>
 
   <section class="screen" data-p="100" id="s-decline-budget">
-    <h1>Totally fair.</h1>
-    <p class="dim center">When you've got some budget set aside to grow, come back and apply. I'll be here. No pressure and no hard feelings.</p>
+    <h1>No worries. I still want to help.</h1>
+    <p class="dim center">Paid ads probably don't make sense for you yet, and that's okay. Follow me and I'll show you exactly what's working right now, for free. When you're ready, come back and apply.</p>
+    <div class="opts" style="margin-top:24px">
+      <a class="opt" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener">&#9654;&nbsp; Watch on YouTube <span class="arw">&rarr;</span></a>
+      <a class="opt" href="INSTAGRAM_URL_HERE" target="_blank" rel="noopener">&#128247;&nbsp; Follow on Instagram <span class="arw">&rarr;</span></a>
+    </div>
   </section>
 
 </div>
