@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply to Work With Jonathan Lindsay</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --blue:#155eef; --blue-dark:#0f4bd0; --blue-soft:#eaf1ff;
+    --ink:#14181f; --sub:#5b6472; --line:#e2e6ec; --bg:#ffffff;
+    --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  *{margin:0;box-sizing:border-box}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+  body{min-height:100vh;display:flex;flex-direction:column}
+  a{color:var(--blue)}
+
+  /* progress */
+  .prog{position:fixed;top:0;left:0;right:0;height:4px;background:#eef0f3;z-index:10}
+  .prog__fill{height:100%;width:0;background:var(--blue);transition:width .35s ease}
+
+  .wrap{width:100%;max-width:520px;margin:0 auto;padding:64px 22px 48px;flex:1;display:flex;flex-direction:column;justify-content:center}
+
+  .screen{display:none;animation:fade .35s ease}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  h1{font-size:clamp(26px,6vw,33px);line-height:1.12;font-weight:800;letter-spacing:-.02em;text-align:center}
+  .sub{margin-top:16px;font-size:17px;line-height:1.5;color:var(--sub);text-align:center}
+  .sub b{color:var(--blue);font-weight:800}
+  .note{margin-top:18px;font-size:14.5px;line-height:1.55;color:var(--sub);text-align:center}
+
+  .q{font-size:clamp(20px,4.6vw,24px);font-weight:700;line-height:1.25;text-align:center;letter-spacing:-.01em}
+  .q-sub{margin-top:10px;font-size:15px;color:var(--sub);text-align:center;line-height:1.5}
+  .qhead{margin-bottom:22px}
+
+  .opts{display:flex;flex-direction:column;gap:11px}
+  .opt{width:100%;border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:13px;
+    padding:17px 18px;font-family:var(--font);font-size:16.5px;font-weight:600;text-align:left;cursor:pointer;
+    transition:border-color .15s,background .15s,transform .05s;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .opt:hover{border-color:var(--blue);background:var(--blue-soft)}
+  .opt:active{transform:scale(.99)}
+  .opt.sel{border-color:var(--blue);background:var(--blue-soft)}
+  .opt .arw{color:var(--blue);flex:none;opacity:.0;transition:opacity .15s}
+  .opt:hover .arw,.opt.sel .arw{opacity:1}
+
+  .fields{display:flex;flex-direction:column;gap:12px}
+  .field{opacity:0;max-height:0;overflow:hidden;transition:opacity .3s,max-height .3s}
+  .field.show{opacity:1;max-height:120px}
+  label{display:block;font-size:13.5px;font-weight:600;color:var(--sub);margin:0 0 6px 2px}
+  input{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:15px 16px;font-family:var(--font);font-size:16px;color:var(--ink);background:#fff}
+  input:focus{outline:none;border-color:var(--blue)}
+
+  .btn{width:100%;border:0;background:var(--blue);color:#fff;border-radius:13px;padding:17px 20px;
+    font-family:var(--font);font-size:17px;font-weight:700;cursor:pointer;margin-top:20px;
+    box-shadow:0 10px 24px -10px rgba(21,94,239,.6);transition:background .15s,transform .05s;display:inline-flex;align-items:center;justify-content:center;gap:9px}
+  .btn:hover{background:var(--blue-dark)}
+  .btn:active{transform:scale(.99)}
+  .btn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+
+  .back{background:none;border:0;color:var(--sub);font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;padding:8px 0;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px}
+  .back:hover{color:var(--ink)}
+
+  /* final-step (calendar) */
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--blue-soft);color:var(--blue);
+    font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:100px;margin:0 auto 18px;
+    border:1px solid rgba(21,94,239,.18)}
+  .final-wrap{max-width:720px}
+  .final h1 u{text-decoration-thickness:3px;text-underline-offset:3px}
+  .book-card{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px -34px rgba(20,24,31,.4)}
+  .book-frame{padding:8px}
+  .book-frame iframe{width:100%;min-height:640px;border:0;display:block}
+
+  .center{text-align:center}
+  .dim{color:var(--sub);font-size:15px;line-height:1.55;margin-top:14px}
+
+  @media (max-width:400px){ .wrap{padding-top:52px} h1{font-size:26px} }
+</style>
+</head>
+<body>
+
+<div class="prog"><div class="prog__fill" id="prog"></div></div>
+
+<div class="wrap" id="wrap">
+
+  <!-- ============ 1. INTRO + OWNER ============ -->
+  <section class="screen active" data-p="15" id="s-intro">
+    <h1>Apply to Work With Jonathan Lindsay</h1>
+    <p class="sub">I have <b id="n1">6</b> clients who are exploding online right now. I'm only taking on <b id="n2">4</b> more at the moment.</p>
+    <p class="note">Every one of my clients works with me directly, and I take care of them personally. That's why I keep it small, and why this is an application. I want to make sure we're actually a good fit before we start.</p>
+    <div class="qhead" style="margin-top:34px"><p class="q">Do you own or run a construction company?</p></div>
+    <div class="opts">
+      <button class="opt" data-go="s-revenue">Yes <span class="arw">&rarr;</span></button>
+      <button class="opt" data-go="s-decline-owner">No <span class="arw">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- ============ 2. REVENUE ============ -->
+  <section class="screen" data-p="38" id="s-revenue">
+    <button class="back" data-back>&lsaquo; Back</button>
+    <div class="qhead"><p class="q">How much is your company doing per year right now?</p></div>
+    <div class="opts">
+      <button class="opt" data-rev="under" data-go="s-budget">Under $750,000 <span class="arw">&rarr;</span></button>
+      <button class="opt" data-rev="750-1.5" data-go="s-want">$750,000 to $1.5M <span class="arw">&rarr;</span></button>
+      <button class="opt" data-rev="1.5-5" data-go="s-want">$1.5M to $5M <span class="arw">&rarr;</span></button>
+      <button class="opt" data-rev="5-15" data-go="s-want">$5M to $15M <span class="arw">&rarr;</span></button>
+      <button class="opt" data-rev="15+" data-go="s-want">$15M+ <span class="arw">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- ============ 3. BUDGET REALITY CHECK (only under $750k) ============ -->
+  <section class="screen" data-p="55" id="s-budget">
+    <button class="back" data-back>&lsaquo; Back</button>
+    <div class="qhead">
+      <p class="q">Before you go further, real talk on cost.</p>
+      <p class="q-sub">Working with me runs <b>$1,000 to $3,000 a month</b>, and to make ads work you'll want at least <b>$5,000 set aside for ad spend</b> to start. If you're not there yet, this isn't the right fit right now, and that's okay.</p>
+    </div>
+    <div class="opts">
+      <button class="opt" data-budget="ready" data-go="s-want">I'm ready to invest <span class="arw">&rarr;</span></button>
+      <button class="opt" data-budget="notyet" data-go="s-decline-budget">Not yet <span class="arw">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- ============ 4. WHAT DO YOU WANT ============ -->
+  <section class="screen" data-p="70" id="s-want">
+    <button class="back" data-back>&lsaquo; Back</button>
+    <div class="qhead"><p class="q">What do you want most right now?</p></div>
+    <div class="opts">
+      <button class="opt" data-want="leads" data-go="s-contact">30+ more leads a month <span class="arw">&rarr;</span></button>
+      <button class="opt" data-want="social" data-go="s-contact">Explosive growth on social <span class="arw">&rarr;</span></button>
+      <button class="opt" data-want="rank" data-go="s-contact">Ranked #1 in Google and AI search <span class="arw">&rarr;</span></button>
+      <button class="opt" data-want="brand" data-go="s-contact">Best-known name in my market <span class="arw">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- ============ 5. CONTACT ============ -->
+  <section class="screen" data-p="86" id="s-contact">
+    <button class="back" data-back>&lsaquo; Back</button>
+    <div class="qhead"><p class="q">Last step. Where should I send the details?</p></div>
+    <div class="fields">
+      <div class="field show" id="f-name"><label>Your name</label><input id="i-name" type="text" autocomplete="name" placeholder="First and last name"></div>
+      <div class="field" id="f-company"><label>Company name</label><input id="i-company" type="text" autocomplete="organization" placeholder="Your company"></div>
+      <div class="field" id="f-phone"><label>Cell phone</label><input id="i-phone" type="tel" autocomplete="tel" placeholder="(000) 000-0000"></div>
+      <div class="field" id="f-email"><label>Email</label><input id="i-email" type="email" autocomplete="email" placeholder="you@company.com"></div>
+    </div>
+    <button class="btn" id="submitBtn" disabled>Next &rarr;</button>
+  </section>
+
+  <!-- ============ 6. FINAL STEP / CALENDAR ============ -->
+  <section class="screen final-wrap" data-p="100" id="s-calendar">
+    <div class="center"><span class="eyebrow">&#9889; Final step</span></div>
+    <h1 class="final">Your application is only complete <u>once you book your call.</u></h1>
+    <p class="dim center">Leaving this page erases your answers, and your application won't be reviewed. Grab the soonest time that works.</p>
+    <div class="book-card">
+      <div class="book-frame">
+        <iframe id="calFrame" src="about:blank" scrolling="no"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DECLINES ============ -->
+  <section class="screen" data-p="100" id="s-decline-owner">
+    <h1>Thanks for stopping by.</h1>
+    <p class="dim center">This one's built specifically for construction company owners. If that's not you, it won't be the right fit, and I'd rather be straight with you than waste your time.</p>
+  </section>
+
+  <section class="screen" data-p="100" id="s-decline-budget">
+    <h1>Totally fair.</h1>
+    <p class="dim center">When you've got some budget set aside to grow, come back and apply. I'll be here. No pressure and no hard feelings.</p>
+  </section>
+
+</div>
+
+<!-- GHL calendar auto-resize -->
+<script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- CONFIG (paste real values when ready) ---------- */
+  var META_PIXEL_ID = "";                 // <-- paste Meta Pixel ID
+  var GHL_WEBHOOK_URL = "";               // <-- paste new GHL inbound webhook URL
+  var CALENDAR_ID = "iYClN3zd4s6CrZIBqeRJ"; // client-facing discovery call
+  var SPOTS_TOTAL = 6, SPOTS_LEFT = 4;    // scarcity numbers (keep honest + updated)
+
+  document.getElementById('n1').textContent = SPOTS_TOTAL;
+  document.getElementById('n2').textContent = SPOTS_LEFT;
+
+  /* ---------- Meta Pixel (loads only when an ID is set) ---------- */
+  if (META_PIXEL_ID){
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL_ID); fbq('track', 'PageView');
+  }
+  function fb(type, name, params){ if(META_PIXEL_ID && window.fbq){ try{ fbq(type, name, params||{}); }catch(e){} } }
+
+  /* ---------- state ---------- */
+  var lead_id = 'ld_' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+  var answers = { owner:null, revenue:null, budget:null, want:null, name:'', company:'', phone:'', email:'' };
+  var history = [];
+  var started = false;
+
+  var prog = document.getElementById('prog');
+  function show(id){
+    var next = document.getElementById(id);
+    var cur = document.querySelector('.screen.active');
+    if(cur === next) return;
+    if(cur){ cur.classList.remove('active'); if(cur.id !== id) history.push(cur.id); }
+    next.classList.add('active');
+    prog.style.width = (next.getAttribute('data-p')||'0') + '%';
+    window.scrollTo(0,0);
+    // first interaction = form start (top-of-funnel signal to optimize on)
+    if(!started){ started = true; fb('track','Lead',{content_name:'funnel_start'}); }
+  }
+  function goBack(){ var prev = history.pop(); if(prev){ var cur=document.querySelector('.screen.active'); cur.classList.remove('active'); var p=document.getElementById(prev); p.classList.add('active'); prog.style.width=(p.getAttribute('data-p')||'0')+'%'; window.scrollTo(0,0);} }
+
+  /* ---------- option buttons ---------- */
+  document.querySelectorAll('.opt').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(btn.dataset.rev) answers.revenue = btn.dataset.rev;
+      if(btn.dataset.budget) answers.budget = btn.dataset.budget;
+      if(btn.dataset.want) answers.want = btn.dataset.want;
+      if(btn.closest('#s-intro')) answers.owner = (btn.dataset.go === 's-decline-owner') ? 'no' : 'yes';
+      var go = btn.dataset.go;
+      if(go) show(go);
+    });
+  });
+  document.querySelectorAll('[data-back]').forEach(function(b){ b.addEventListener('click', goBack); });
+
+  /* ---------- contact progressive reveal ---------- */
+  var iName=document.getElementById('i-name'), iCo=document.getElementById('i-company'),
+      iPh=document.getElementById('i-phone'), iEm=document.getElementById('i-email'),
+      submitBtn=document.getElementById('submitBtn');
+  function reveal(id){ document.getElementById(id).classList.add('show'); }
+  function emailOk(v){ return /.+@.+\..+/.test(v); }
+  function phoneOk(v){ return (v.replace(/\D/g,'').length >= 10); }
+  function refresh(){
+    if(iName.value.trim().length>1) reveal('f-company');
+    if(iCo.value.trim().length>0) reveal('f-phone');
+    if(phoneOk(iPh.value)) reveal('f-email');
+    var ready = iName.value.trim().length>1 && iCo.value.trim().length>0 && phoneOk(iPh.value) && emailOk(iEm.value);
+    submitBtn.disabled = !ready;
+  }
+  [iName,iCo,iPh,iEm].forEach(function(el){ el.addEventListener('input', refresh); });
+
+  /* ---------- webhook ---------- */
+  function postWebhook(stage){
+    answers.name=iName.value.trim(); answers.company=iCo.value.trim();
+    answers.phone=iPh.value.trim(); answers.email=iEm.value.trim();
+    var revLabel = {under:'Under $750k','750-1.5':'$750k-$1.5M','1.5-5':'$1.5M-$5M','5-15':'$5M-$15M','15+':'$15M+'}[answers.revenue]||answers.revenue;
+    var wantLabel = {leads:'30+ leads/mo',social:'Explosive social growth',rank:'#1 Google & AI',brand:'Best-known in market'}[answers.want]||answers.want;
+    var brief = 'FUNNEL APPLICATION ('+stage+') | Company: '+answers.company+
+                ' | Revenue: '+revLabel+' | Wants: '+wantLabel+
+                ' | Budget-ready: '+(answers.budget||'n/a')+' | lead_id: '+lead_id;
+    var payload = { full_name:answers.name, email:answers.email, phone:answers.phone, brief_description:brief, lead_id:lead_id };
+    if(!GHL_WEBHOOK_URL){ console.log('[webhook placeholder]', payload); return; }
+    try{ fetch(GHL_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}); }catch(e){}
+  }
+
+  /* ---------- calendar prefill ---------- */
+  function buildCalendar(){
+    var parts = answers.name.trim().split(/\s+/);
+    var first = parts.shift()||''; var last = parts.join(' ');
+    var q = '?first_name='+encodeURIComponent(first)+'&last_name='+encodeURIComponent(last)+
+            '&email='+encodeURIComponent(answers.email)+'&phone='+encodeURIComponent(answers.phone);
+    document.getElementById('calFrame').src = 'https://api.leadconnectorhq.com/widget/booking/'+CALENDAR_ID+q;
+  }
+
+  /* ---------- submit (qualified) ---------- */
+  submitBtn.addEventListener('click', function(){
+    if(submitBtn.disabled) return;
+    postWebhook('qualified');
+    // This point is only reachable by qualified applicants -> clean signal for Meta
+    fb('track','Lead',{content_name:'qualified_application'});
+    fb('trackCustom','QualifiedLead',{ revenue:answers.revenue, wants:answers.want });
+    buildCalendar();
+    show('s-calendar');
+  });
+
+  /* ---------- booked-call signal (best effort from GHL iframe) ---------- */
+  window.addEventListener('message', function(e){
+    var d = e.data;
+    var s = (typeof d === 'string') ? d : (d && (d.type||d.event||''));
+    if(typeof s === 'string' && /book|appointment|scheduled|confirm/i.test(s)){
+      fb('trackCustom','BookedCall',{});
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
