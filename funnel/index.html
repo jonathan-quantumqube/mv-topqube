@@ -217,8 +217,9 @@
     next.classList.add('active');
     prog.style.width = (next.getAttribute('data-p')||'0') + '%';
     window.scrollTo(0,0);
-    // first interaction = form start (top-of-funnel signal to optimize on)
-    if(!started){ started = true; fb('track','Lead',{content_name:'funnel_start'}); }
+    // first interaction = form start. Custom event (safe to OPTIMIZE on for volume).
+    // Kept OFF the standard "Lead" event so "Lead" stays qualified-only.
+    if(!started){ started = true; fb('trackCustom','FunnelStart',{}); }
   }
   function goBack(){ var prev = history.pop(); if(prev){ var cur=document.querySelector('.screen.active'); cur.classList.remove('active'); var p=document.getElementById(prev); p.classList.add('active'); prog.style.width=(p.getAttribute('data-p')||'0')+'%'; window.scrollTo(0,0);} }
 
