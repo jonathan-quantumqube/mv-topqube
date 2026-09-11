@@ -21,7 +21,7 @@
   a{color:var(--blue)}
 
   /* progress */
-  .prog{position:fixed;top:0;left:0;right:0;height:4px;background:#eef0f3;z-index:10}
+  .prog{position:fixed;top:0;left:0;right:0;height:6px;background:#eef0f3;z-index:10}
   .prog__fill{height:100%;width:0;background:var(--blue);transition:width .35s ease}
 
   .wrap{width:100%;max-width:780px;margin:0 auto;padding:60px 20px 48px;flex:1;display:flex;flex-direction:column;justify-content:center}
@@ -35,6 +35,8 @@
   .sub{margin-top:16px;font-size:18px;line-height:1.5;color:#20242c;font-weight:500;text-align:center}
   .sub b{color:var(--blue);font-weight:800}
   .note{margin-top:16px;font-size:15.5px;line-height:1.55;color:#333a45;text-align:center}
+  .ps{margin-top:28px;font-size:14.5px;line-height:1.6;color:#3a4150;text-align:center}
+  .ps b{color:var(--ink);font-weight:700}
 
   .q{font-size:clamp(20px,4.6vw,24px);font-weight:700;line-height:1.25;text-align:center;letter-spacing:-.01em}
   .q-sub{margin-top:10px;font-size:15px;color:var(--sub);text-align:center;line-height:1.5}
@@ -49,6 +51,10 @@
   .opt.sel{border-color:var(--blue);background:var(--blue-soft)}
   .opt .arw{color:var(--blue);flex:none;opacity:.0;transition:opacity .15s}
   .opt:hover .arw,.opt.sel .arw{opacity:1}
+  /* visual options (goal question) */
+  .opts--visual .opt{padding:19px 18px;gap:14px}
+  .opts--visual .ic{font-size:25px;line-height:1;flex:none}
+  .opts--visual .olabel{flex:1;text-align:left}
 
   .fields{display:flex;flex-direction:column;gap:12px}
   .field{opacity:0;max-height:0;overflow:hidden;transition:opacity .3s,max-height .3s}
@@ -95,19 +101,19 @@
 <div class="wrap" id="wrap">
 
   <!-- ============ 1. INTRO + OWNER ============ -->
-  <section class="screen active" data-p="15" id="s-intro">
+  <section class="screen active" data-p="20" id="s-intro">
     <h1>Apply to Work With Me</h1>
     <p class="sub">I have <b id="n1">6</b> clients right now. I'm only taking on <b id="n2">4</b> more.</p>
-    <p class="note">Every one of my clients works with me directly, and I take care of their accounts personally. That's why I keep it small, and this is an application.</p>
-    <div class="qhead" style="margin-top:34px"><p class="q">Do you own or run a construction company?</p></div>
+    <div class="qhead" style="margin-top:30px"><p class="q">Do you own or run a construction company?</p></div>
     <div class="opts">
       <button class="opt" data-go="s-revenue">Yes <span class="arw">&rarr;</span></button>
       <button class="opt" data-go="s-decline-owner">No <span class="arw">&rarr;</span></button>
     </div>
+    <p class="ps"><b>P.S. Why is this an application?</b> Every one of my clients works with me directly, and I take care of their accounts personally. I just want to make sure I'm finding good people to work with.</p>
   </section>
 
   <!-- ============ 2. REVENUE ============ -->
-  <section class="screen" data-p="38" id="s-revenue">
+  <section class="screen" data-p="45" id="s-revenue">
     <button class="back" data-back>&lsaquo; Back</button>
     <div class="qhead"><p class="q">How much is your company doing per year right now?</p></div>
     <div class="opts">
@@ -133,19 +139,19 @@
   </section>
 
   <!-- ============ 4. WHAT DO YOU WANT ============ -->
-  <section class="screen" data-p="70" id="s-want">
+  <section class="screen" data-p="65" id="s-want">
     <button class="back" data-back>&lsaquo; Back</button>
     <div class="qhead"><p class="q">What do you want most right now?</p></div>
-    <div class="opts">
-      <button class="opt" data-want="leads" data-go="s-contact">30+ more leads a month <span class="arw">&rarr;</span></button>
-      <button class="opt" data-want="social" data-go="s-contact">Explosive growth on social <span class="arw">&rarr;</span></button>
-      <button class="opt" data-want="rank" data-go="s-contact">Ranked #1 in Google and AI search <span class="arw">&rarr;</span></button>
-      <button class="opt" data-want="brand" data-go="s-contact">Best-known name in my market <span class="arw">&rarr;</span></button>
+    <div class="opts opts--visual">
+      <button class="opt" data-want="leads" data-go="s-contact"><span class="ic">&#128200;</span><span class="olabel">30+ more leads a month</span><span class="arw">&rarr;</span></button>
+      <button class="opt" data-want="social" data-go="s-contact"><span class="ic">&#128640;</span><span class="olabel">Explosive growth on social</span><span class="arw">&rarr;</span></button>
+      <button class="opt" data-want="rank" data-go="s-contact"><span class="ic">&#128269;</span><span class="olabel">Ranked #1 on Google &amp; AI search</span><span class="arw">&rarr;</span></button>
+      <button class="opt" data-want="brand" data-go="s-contact"><span class="ic">&#128081;</span><span class="olabel">Best-known name in my market</span><span class="arw">&rarr;</span></button>
     </div>
   </section>
 
   <!-- ============ 5. CONTACT ============ -->
-  <section class="screen" data-p="86" id="s-contact">
+  <section class="screen" data-p="82" id="s-contact">
     <button class="back" data-back>&lsaquo; Back</button>
     <div class="qhead"><p class="q">Last step. Where should I send the details?</p></div>
     <div class="fields">
@@ -158,8 +164,7 @@
   </section>
 
   <!-- ============ 6. FINAL STEP / CALENDAR ============ -->
-  <section class="screen final-wrap" data-p="100" id="s-calendar">
-    <div class="center"><span class="eyebrow">&#9889; Final step</span></div>
+  <section class="screen final-wrap" data-p="97" id="s-calendar">
     <h1 class="final">Your application is only complete <u>once you book your call.</u></h1>
     <p class="dim center">Leaving this page erases your answers, and your application won't be reviewed. Grab the soonest time that works.</p>
     <div class="book-card">
