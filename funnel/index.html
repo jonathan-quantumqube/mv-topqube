@@ -161,13 +161,12 @@
     <button class="back" data-back>&lsaquo; Back</button>
     <div class="qhead">
       <p class="q">Before you go further, here's what it costs to work with me.</p>
-      <p class="q-sub">Working with me is <b>$1,000 to $3,000 a month</b>, or a <b>one-time fee of $2,500</b>.</p>
-      <p class="q-sub">You'll also want at least <b>$5,000 set aside for ads</b> when you start.</p>
-      <p class="q-sub">If that's more than you want to spend right now, this probably isn't the best fit yet. I still want to help you, and that's okay.</p>
+      <p class="q-sub">Working with me is <b>$1,000 to $3,000 a month</b>, or a <b>one-time fee of $2,500</b>. You'll also want at least <b>$5,000 set aside for ads</b> when you start.</p>
+      <p class="q-sub" style="color:#d5303c;font-weight:700">If that's more than you want to spend right now, this probably isn't the best fit yet, and that's okay. I still want to help you.</p>
     </div>
     <div class="opts opts--visual">
-      <button class="opt" data-budget="ready" data-go="s-want"><span class="ic">&#128176;</span><span class="ostack"><span class="olabel">I'm ready to invest</span><span class="osub">I have $2,500 I could put toward marketing right now.</span></span><span class="arw">&rarr;</span></button>
-      <button class="opt" data-budget="notyet" data-go="s-decline-budget"><span class="ic">&#128241;</span><span class="ostack"><span class="olabel">Not yet</span><span class="osub">Send me the free stuff and I'll follow along for now.</span></span><span class="arw">&rarr;</span></button>
+      <button class="opt" data-budget="ready" data-go="s-want"><span class="ic">&#11014;&#65039;</span><span class="ostack"><span class="olabel">I'm ready to invest</span><span class="osub">I have $2,500 I could put toward marketing right now.</span></span><span class="arw">&rarr;</span></button>
+      <button class="opt" data-budget="notyet" data-go="s-decline-budget"><span class="ic">&#128241;</span><span class="ostack"><span class="olabel">Send me free stuff instead</span><span class="osub">No worries, I'll follow along for now.</span></span><span class="arw">&rarr;</span></button>
     </div>
   </section>
 
@@ -198,8 +197,8 @@
 
   <!-- ============ 6. FINAL STEP / CALENDAR ============ -->
   <section class="screen final-wrap" data-p="94" id="s-calendar">
-    <h1 class="final">Your application is only complete <u>once you book your call.</u></h1>
-    <p class="dim center">Leaving this page erases your answers, and your application won't be reviewed. Grab the soonest time that works.</p>
+    <h1 class="final">Last step: <u>book your call.</u></h1>
+    <p class="dim center" style="font-size:13.5px;margin-top:10px">Your application isn't complete until you book. Pick the soonest time that works.</p>
     <div class="book-card">
       <div class="book-frame">
         <iframe id="calFrame" src="about:blank" scrolling="no"></iframe>
@@ -235,15 +234,16 @@
 
   /* ---------- CONFIG (paste real values when ready) ---------- */
   var META_PIXEL_ID = "1253053683563839"; // QQ Growth Pages pixel
-  var GHL_WEBHOOK_URL = "";               // <-- paste new GHL inbound webhook URL
+  var GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/BPP5wrVawpBnmz3Eo3yH/webhook-trigger/89d94ebb-c9be-49b8-86fd-872dc8512d7d";
   var CALENDAR_ID = "iYClN3zd4s6CrZIBqeRJ"; // client-facing discovery call
   var SPOTS_TOTAL = 6, SPOTS_LEFT = 4;    // scarcity numbers (keep honest + updated)
 
   document.getElementById('n1').textContent = SPOTS_TOTAL;
   document.getElementById('n2').textContent = SPOTS_LEFT;
 
-  /* ---------- Meta Pixel (loads only when an ID is set) ---------- */
-  if (META_PIXEL_ID){
+  /* ---------- Meta Pixel (loads only when an ID is set; never on localhost) ---------- */
+  var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  if (META_PIXEL_ID && !isLocal){
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -251,7 +251,7 @@
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', META_PIXEL_ID); fbq('track', 'PageView');
   }
-  function fb(type, name, params){ if(META_PIXEL_ID && window.fbq){ try{ fbq(type, name, params||{}); }catch(e){} } }
+  function fb(type, name, params){ if(META_PIXEL_ID && !isLocal && window.fbq){ try{ fbq(type, name, params||{}); }catch(e){} } }
 
   /* ---------- state ---------- */
   var lead_id = 'ld_' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
@@ -306,41 +306,94 @@
     var ready = iName.value.trim().length>1 && iCo.value.trim().length>0 && phoneOk(iPh.value) && emailOk(iEm.value);
     submitBtn.disabled = !ready;
   }
-  /* live phone formatting: (385) 236-0675 */
-  function fmtPhone(v){ var d=v.replace(/\D/g,'').slice(0,10); if(!d) return ''; if(d.length<4) return '('+d; if(d.length<7) return '('+d.slice(0,3)+') '+d.slice(3); return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6); }
+  /* phone: normalize to a 10-digit US number, dropping +1 / leading country code */
+  function phoneDigits(v){ var d=(v||'').replace(/\D/g,''); if(d.length===11 && d.charAt(0)==='1') d=d.slice(1); return d.slice(0,10); }
+  /* live formatting: (385) 236-0675 */
+  function fmtPhone(v){ var d=phoneDigits(v); if(!d) return ''; if(d.length<4) return '('+d; if(d.length<7) return '('+d.slice(0,3)+') '+d.slice(3); return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6); }
   iPh.addEventListener('input', function(){ iPh.value = fmtPhone(iPh.value); });
   [iName,iCo,iPh,iEm].forEach(function(el){ el.addEventListener('input', refresh); });
+
+  /* ---------- traffic source (UTMs + referrer -> plain English), captured first-touch ---------- */
+  function getSource(){
+    try{ var s = JSON.parse(sessionStorage.getItem('qq_src')||'null'); if(s) return s; }catch(e){}
+    var p = new URLSearchParams(location.search);
+    var us = (p.get('utm_source')||'').toLowerCase();
+    var um = (p.get('utm_medium')||'').toLowerCase();
+    var ref = document.referrer||'';
+    var refHost=''; try{ refHost = ref ? new URL(ref).hostname.replace(/^www\./,'') : ''; }catch(e){}
+    var label;
+    if(us){
+      var name = {instagram:'Instagram',ig:'Instagram',facebook:'Facebook',fb:'Facebook',meta:'Facebook/Instagram',google:'Google',youtube:'YouTube',yt:'YouTube',email:'Email',linkedin:'LinkedIn',tiktok:'TikTok'}[us] || (us.charAt(0).toUpperCase()+us.slice(1));
+      var paid = /(cpc|paid|ad|ads|paid_social)/.test(um), bio = /bio|linkinbio|link_in_bio/.test(um);
+      label = name + (paid?' Ad':(bio?' bio':(um?' ('+um+')':'')));
+    } else if(p.get('fbclid')){ label = 'Facebook/Instagram Ad'; }
+    else if(p.get('gclid')){ label = 'Google Ad'; }
+    else if(refHost){
+      label = {'instagram.com':'Instagram','l.instagram.com':'Instagram','facebook.com':'Facebook','l.facebook.com':'Facebook','lm.facebook.com':'Facebook','m.facebook.com':'Facebook','google.com':'Google','youtube.com':'YouTube','t.co':'X (Twitter)','linkedin.com':'LinkedIn','bing.com':'Bing'}[refHost] || refHost;
+    } else { label = 'Direct'; }
+    var out = { source:label, utm_source:p.get('utm_source')||'', utm_medium:p.get('utm_medium')||'', utm_campaign:p.get('utm_campaign')||'', referrer:ref };
+    try{ sessionStorage.setItem('qq_src', JSON.stringify(out)); }catch(e){}
+    return out;
+  }
+  getSource(); // capture the moment they land
 
   /* ---------- webhook ---------- */
   function postWebhook(stage){
     answers.name=iName.value.trim(); answers.company=iCo.value.trim();
     answers.phone=iPh.value.trim(); answers.email=iEm.value.trim();
-    var revLabel = {under:'Under $750k','750-1.5':'$750k-$1.5M','1.5-5':'$1.5M-$5M','5-15':'$5M-$15M','15+':'$15M+'}[answers.revenue]||answers.revenue;
-    var wantLabel = {leads:'30+ leads/mo',social:'Explosive social growth',rank:'#1 Google & AI',brand:'Best-known in market'}[answers.want]||answers.want;
-    var brief = 'FUNNEL APPLICATION ('+stage+') | Company: '+answers.company+
-                ' | Revenue: '+revLabel+' | Wants: '+wantLabel+
-                ' | Budget-ready: '+(answers.budget||'n/a')+' | lead_id: '+lead_id;
-    var payload = { full_name:answers.name, email:answers.email, phone:answers.phone, brief_description:brief, lead_id:lead_id };
+    var revLabel = {under:'Under $750k','750-1.5':'$750k-$1.5M','1.5-5':'$1.5M-$5M','5-15':'$5M-$15M','15+':'$15M+'}[answers.revenue]||answers.revenue||'n/a';
+    var wantLabel = {leads:'30+ leads a month',social:'Explosive social growth',rank:'#1 on Google & AI',brand:'Best-known in market'}[answers.want]||answers.want||'n/a';
+    var ownLabel = answers.owner==='yes' ? 'Yes' : (answers.owner==='no' ? 'No' : 'n/a');
+    var budgetLabel = answers.budget==='ready' ? 'Ready to invest' : (answers.budget==='notyet' ? 'Not yet' : 'n/a');
+    var src = getSource();
+    var details =
+      'Company: '+answers.company+'\n'+
+      'Owns or runs a construction company: '+ownLabel+'\n'+
+      'Revenue per year: '+revLabel+'\n'+
+      'Wants most: '+wantLabel+'\n'+
+      'Budget check: '+budgetLabel+'\n'+
+      'Source: '+src.source+'\n'+
+      'Applied: '+new Date().toLocaleString()+'\n'+
+      'Lead ID: '+lead_id;
+    var payload = {
+      full_name: answers.name,
+      email: answers.email,
+      phone: '+1'+phoneDigits(answers.phone),
+      company: answers.company,
+      source: src.source,
+      utm_source: src.utm_source,
+      utm_medium: src.utm_medium,
+      utm_campaign: src.utm_campaign,
+      referrer: src.referrer,
+      project_details: details,
+      brief_description: details,
+      lead_id: lead_id
+    };
     if(!GHL_WEBHOOK_URL){ console.log('[webhook placeholder]', payload); return; }
     try{ fetch(GHL_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}); }catch(e){}
   }
 
   /* ---------- calendar prefill ---------- */
   function buildCalendar(){
-    var parts = answers.name.trim().split(/\s+/);
+    var full = (answers.name||'').trim();
+    var parts = full.split(/\s+/);
     var first = parts.shift()||''; var last = parts.join(' ');
-    var q = '?first_name='+encodeURIComponent(first)+'&last_name='+encodeURIComponent(last)+
-            '&email='+encodeURIComponent(answers.email)+'&phone='+encodeURIComponent(answers.phone);
+    var ph = phoneDigits(answers.phone); // 10 digits, no +1 (GHL chokes on the country code)
+    var q = '?name='+encodeURIComponent(full)+'&full_name='+encodeURIComponent(full)+
+            '&first_name='+encodeURIComponent(first)+'&last_name='+encodeURIComponent(last)+
+            '&email='+encodeURIComponent(answers.email)+'&phone='+encodeURIComponent(ph);
     document.getElementById('calFrame').src = 'https://api.leadconnectorhq.com/widget/booking/'+CALENDAR_ID+q;
   }
 
   /* ---------- submit (qualified) ---------- */
   submitBtn.addEventListener('click', function(){
     if(submitBtn.disabled) return;
-    postWebhook('qualified');
-    // This point is only reachable by qualified applicants -> clean signal for Meta
-    fb('track','Lead',{content_name:'qualified_application'});
-    fb('trackCustom','QualifiedLead',{ revenue:answers.revenue, wants:answers.want });
+    postWebhook('qualified'); // always send the lead to me (GHL)
+    // Under $750k/mo: send to me but do NOT tell Meta to optimize toward them.
+    if(answers.revenue !== 'under'){
+      fb('track','Lead',{content_name:'qualified_application'});
+      fb('trackCustom','QualifiedLead',{ revenue:answers.revenue, wants:answers.want });
+    }
     buildCalendar();
     show('s-calendar');
   });
