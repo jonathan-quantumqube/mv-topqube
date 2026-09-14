@@ -11,151 +11,212 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
   :root{
-    --blue:#155eef; --blue-soft:#eaf1ff; --red:#d83a45; --red-soft:#fdf3f3;
-    --ink:#14181f; --sub:#414a58; --line:#e2e6ec; --bg:#ffffff;
+    --blue:#155eef; --red:#d5303c;
+    --ink:#1b2029; --sub:#5b6472; --line:#e6e9ee; --bg:#ffffff;
     --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   }
   *{margin:0;box-sizing:border-box}
   html,body{background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
   img{max-width:100%;display:block}
   a{color:var(--blue)}
-  .prog{position:fixed;top:0;left:0;right:0;height:6px;background:var(--blue);z-index:5}
-  .wrap{width:100%;max-width:600px;margin:0 auto;padding:50px 22px 56px}
 
-  .badge{display:flex;width:fit-content;max-width:100%;align-items:center;gap:8px;margin:0 auto 26px;background:var(--blue-soft);color:var(--blue);font-weight:800;font-size:13.5px;letter-spacing:.03em;text-transform:uppercase;padding:9px 18px;border-radius:100px;line-height:1.25;border:1px solid rgba(21,94,239,.18)}
-  .badge svg{width:15px;height:15px;stroke:var(--blue);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .wrap{width:100%;max-width:560px;margin:0 auto;padding:56px 24px 60px}
 
-  /* red confession */
-  .confess{background:var(--red-soft);border:1px solid #f2cccf;border-left:5px solid var(--red);border-radius:14px;padding:20px 22px}
-  .confess p{font-size:18px;line-height:1.55;color:#43272a;font-weight:500}
+  .hook{font-size:clamp(30px,7.4vw,42px);line-height:1.08;font-weight:800;letter-spacing:-.02em;color:var(--red);margin-bottom:30px}
 
-  /* story */
-  .story{max-width:520px;margin:0 auto}
-  .story p{font-size:18.5px;line-height:1.55;color:#1e232b;margin-top:22px}
-  .story p b{font-weight:800;color:var(--ink)}
-  .story .big{font-size:clamp(22px,5vw,27px);font-weight:800;letter-spacing:-.01em;line-height:1.25;color:var(--ink)}
-  .story .big em{font-style:normal;color:var(--blue)}
-  .num{color:var(--blue);font-weight:800}
+  /* plain letter body: one sentence per line */
+  .ln{font-size:18px;line-height:1.5;color:var(--ink);margin-top:7px}
+  .ln.gap{margin-top:56px}
+  .ln.first{margin-top:0}
+  .ln.b{font-weight:700}
+  /* anchor = the bold lead-in that a skimmer's eye lands on (layer-cake) */
+  .ln.anchor{font-weight:700;letter-spacing:-.01em}
+  /* key numbers carry weight so the eye lands on them, same size */
+  .num{font-weight:700}
 
-  .sec{margin-top:38px}
-  .lead-in{font-size:16px;font-weight:700;color:var(--sub);text-align:center;margin-bottom:16px}
+  /* hairline between big sections so the eye sees clear breaks */
+  .divide{height:1px;background:var(--line);border:0;margin:52px 0 44px}
 
-  /* screenshot proof */
-  .testi{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:14px}
-  .testi__q{padding:18px 20px 4px;font-size:18px;line-height:1.45;font-weight:700}
-  .testi__q .hl{color:var(--blue)}
-  .testi__by{padding:6px 20px 15px;font-size:13.5px;color:var(--sub)}
-  .testi__shot{border-top:1px solid var(--line);background:#f6f8fb}
-  .testi__shot img{margin:0 auto;max-width:340px;width:100%}
+  .sec{margin-top:40px}
+  .lead{font-size:18px;line-height:1.5;color:var(--ink);margin-bottom:16px}
+  .lead.anchor{font-weight:700;letter-spacing:-.01em}
+
+  /* proof screenshots */
+  .hero-shot{max-width:330px;margin:0 auto 14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#f6f8fb}
   .wall{column-count:2;column-gap:12px}
   .shot{break-inside:avoid;margin:0 0 12px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#f6f8fb}
-  .ph{break-inside:avoid;margin:0 0 12px;border:1.5px dashed #c7cdd6;border-radius:12px;background:#fafbfc;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px 12px;color:#9aa3b0}
-  .ph svg{width:26px;height:26px;stroke:#b3bbc7;stroke-width:2;fill:none;margin-bottom:8px}
-  .ph span{font-size:12.5px;font-weight:600;line-height:1.4}
-  .note{margin-top:12px;font-size:12.5px;color:var(--sub);text-align:center}
+  .ph{break-inside:avoid;margin:0 0 12px;border:1.5px dashed #ccd2db;border-radius:12px;background:#fafbfc;min-height:148px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px 12px;color:#9aa3b0}
+  .ph svg{width:24px;height:24px;stroke:#b3bbc7;stroke-width:2;fill:none;margin-bottom:8px}
+  .ph span{font-size:12px;font-weight:600;line-height:1.4}
+  .fine{margin-top:12px;font-size:13px;color:var(--sub)}
 
-  /* videos */
+  /* tap-to-expand screenshots */
+  .shotbtn{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid;margin:0 0 12px}
+  .shotbtn img{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#f6f8fb}
+
+  /* project gallery: the work these texts turn into (names only) */
+  .job-wall{column-count:2;column-gap:12px;margin-top:12px}
+  .job{position:relative;break-inside:avoid;margin:0 0 12px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#f6f8fb}
+  .job img{width:100%;display:block}
+  .job figcaption{position:absolute;left:0;right:0;bottom:0;color:#fff;font-weight:700;font-size:14px;line-height:1.2;padding:22px 12px 10px;background:linear-gradient(to top,rgba(10,14,20,.82),rgba(10,14,20,0))}
+  .job.feature{margin:12px 0 0}
+  .job.feature figcaption{font-size:17px;padding:30px 16px 14px}
+
+  /* image lightbox */
+  .imgbox{position:fixed;inset:0;background:rgba(12,16,22,.9);display:none;align-items:center;justify-content:center;padding:24px;z-index:50}
+  .imgbox.open{display:flex}
+  .imgbox img{max-width:100%;max-height:100%;border-radius:14px;box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+  .imgbox .x{position:absolute;top:16px;right:20px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+
+  /* videos (click to play) */
   .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .vcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-  .vembed{position:relative;aspect-ratio:16/9;background:#0d1117}
-  .vembed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  .vlabel{padding:13px 15px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
+  .vcard{display:flex;flex-direction:column;padding:0;border:0;background:none;cursor:pointer;text-align:left;font:inherit}
+  .vposter{position:relative;display:block;aspect-ratio:16/9;background:linear-gradient(135deg,#1b2432,#0d1117);border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .vplay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#3a78ff,#155eef);display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(21,94,239,.8);transition:transform .18s}
+  .vcard:hover .vplay{transform:translate(-50%,-50%) scale(1.09)}
+  .vplay svg{width:20px;height:20px;fill:#fff;margin-left:3px}
+  .vlabel{padding:9px 2px 0;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.3}
+  /* video lightbox */
+  .vbox{position:fixed;inset:0;background:rgba(12,16,22,.92);display:none;align-items:center;justify-content:center;padding:24px;z-index:60}
+  .vbox.open{display:flex}
+  .vbox .vframe{position:relative;width:100%;max-width:900px;aspect-ratio:16/9}
+  .vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px}
+  .vbox .x{position:absolute;top:16px;right:20px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:24px;line-height:1;cursor:pointer}
 
-  /* steps */
-  .card{border:1px solid var(--line);border-radius:16px;padding:6px 20px}
-  .row{display:flex;gap:14px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--line)}
-  .row:last-child{border-bottom:0}
-  .rnum{flex:none;width:27px;height:27px;border-radius:50%;background:var(--blue-soft);color:var(--blue);font-weight:800;font-size:13.5px;display:grid;place-items:center;margin-top:1px}
-  .row p{font-size:15.5px;line-height:1.5;color:var(--ink)}
-  .row p span{color:var(--sub)}
-
-  .ps{margin-top:30px;background:#fbfcfe;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:18px 20px;font-size:16.5px;line-height:1.55;color:#1e232b}
-  .ps b{color:var(--ink);font-weight:800}
-  .textus{margin-top:24px;text-align:center;font-size:15px;color:var(--sub);line-height:1.6}
+  .sig{margin-top:26px;font-size:18px;color:var(--ink)}
+  .textus{margin-top:34px;font-size:15px;color:var(--sub);line-height:1.6}
   .textus a{font-weight:700;text-decoration:none}
-  .sig{margin-top:22px;text-align:center;font-size:16px;color:var(--ink);font-weight:700}
 
-  @media (max-width:600px){
-    .vgrid{grid-template-columns:1fr}
-    .wall{column-count:2}
-  }
+  @media (max-width:560px){ .vgrid{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
-<div class="prog"></div>
 <div class="wrap">
 
-  <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Read this before our call</div>
+  <p class="hook">Most marketing is a scam.</p>
 
-  <!-- RED CONFESSION -->
-  <div class="confess">
-    <p>You've probably been burned by a marketer before. Some slick pitch, a bunch of promises, and then not much actually happened. Half of them don't even understand how your business works. I'd honestly be a little skeptical of me too.</p>
-  </div>
+  <p class="ln first">You've probably been burned by a marketer before.</p>
+  <p class="ln">The slick pitch, the big promises, then nothing.</p>
+  <p class="ln b">Half of them don't even understand how your business works.</p>
 
-  <!-- STORY -->
-  <div class="story">
-    <p class="big">I'm not good at a lot of stuff. But getting contractors more work is the one thing I'm <em>genuinely great at</em>, and it's pretty much all I think about.</p>
-    <p>I've dumped <b>over $20,000</b> into learning this from the best marketers alive. Hormozi, Austin Schneider, guys most people never get near. Then I take all of it and point it straight at getting my clients more jobs.</p>
-    <p>One outdoor living GC I work with went from <span class="num">$2.5M to $6M</span>. A deck company jumped from <span class="num">$1.2M to around $2.5M</span>. Most of the people I work with double or triple in a year. They've still gotta close the deals and do good work, so I can't take all the credit. I just get a lot more of the right people reaching out to them.</p>
-  </div>
+  <p class="ln gap anchor">I'm not good at a lot of things.</p>
+  <p class="ln">But getting contractors more work is the one thing I'm genuinely great at.</p>
 
-  <!-- SCREENSHOT PROOF -->
-  <div class="sec">
-    <p class="lead-in">This is the kind of stuff showing up in their phones:</p>
-    <div class="testi">
-      <div class="testi__q">&ldquo;You're my <span class="hl">million dollar man.</span> Three leads in an hour.&rdquo;</div>
-      <div class="testi__by">John, outdoor living contractor. A 4th came in before he finished texting me.</div>
-      <div class="testi__shot"><img src="/img/opt/testimonial.jpg" alt="Client text: you're my million dollar man, three leads in an hour"></div>
-    </div>
+  <p class="ln gap anchor">I've spent over <span class="num">$20,000</span> learning from the best marketers alive.</p>
+  <p class="ln">Hormozi. Austin Schneider.</p>
+  <p class="ln">I never stop learning, so my clients can trust me.</p>
+
+  <p class="ln gap">One landscaper I work with went from <span class="num">$2.5M to $6M</span>.</p>
+  <p class="ln">An outdoor living GC jumped from <span class="num">$1.2M to $2.5M</span>.</p>
+
+  <p class="ln gap anchor">Most of the people I work with double or triple in a year.</p>
+  <p class="ln">They still have to close the deals and do the work.</p>
+  <p class="ln">I just get a lot more of the right people reaching out to them.</p>
+
+  <hr class="divide">
+
+  <!-- PROOF: client texts (tap to expand) -->
+  <div class="sec" style="margin-top:0">
+    <p class="lead anchor">Here's the kind of texts I get from my clients.</p>
     <div class="wall">
-      <div class="shot"><img src="/img/opt/lead-3.jpg" alt="Estimate request from a homeowner"></div>
-      <div class="shot"><img src="/img/opt/lead-8.jpg" alt="Estimate request from a homeowner"></div>
-      <!-- NEW CLIENT SCREENSHOTS (replace these 3 placeholders when Jonathan sends them) -->
-      <div class="ph"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 15l4-4 3 3 5-5 4 4"/></svg><span>New client result<br>(screenshot coming)</span></div>
-      <div class="shot"><img src="/img/opt/lead-4.jpg" alt="Estimate request from a homeowner"></div>
-      <div class="ph"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 15l4-4 3 3 5-5 4 4"/></svg><span>New client result<br>(screenshot coming)</span></div>
-      <div class="shot"><img src="/img/opt/lead-1.jpg" alt="Estimate request from a homeowner"></div>
-      <div class="shot"><img src="/img/opt/lead-5.jpg" alt="Estimate request from a homeowner"></div>
-      <div class="ph"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 15l4-4 3 3 5-5 4 4"/></svg><span>New client result<br>(screenshot coming)</span></div>
-      <div class="shot"><img src="/img/opt/lead-6.jpg" alt="Estimate request from a homeowner"></div>
+      <button class="shotbtn" type="button"><img src="/img/opt/testimonial.jpg" alt="Client text: you're my million dollar man, three leads in an hour"></button>
+      <button class="shotbtn" type="button"><img src="/img/opt/text-1.jpg" alt="Client text: signing first job tomorrow from your leads, $95k"></button>
+      <button class="shotbtn" type="button"><img src="/img/opt/text-2.jpg" alt="Client text: leads rolling in nonstop, 9 in the last week, estimates booked with 3"></button>
+      <button class="shotbtn" type="button"><img src="/img/opt/text-3.jpg" alt="Client text: got the first lead in the first 24 hours, estimate set for Monday"></button>
+      <button class="shotbtn" type="button"><img src="/img/opt/text-4.jpg" alt="Client text: 2 leads in the first few days, solid projects"></button>
+      <button class="shotbtn" type="button"><img src="/img/opt/text-5.jpg" alt="Client text: lead came within the first 24 hours"></button>
+      <button class="shotbtn" type="button"><img src="/img/opt/text-6.jpg" alt="Client text: good potential to do the type of project I enjoy"></button>
     </div>
-    <p class="note">Real texts and estimate requests from real clients. Names blurred for privacy.</p>
+    <p class="fine">Real texts from real clients. Tap any to read it. Names blurred for privacy.</p>
   </div>
 
-  <!-- VIDEOS (brought in from /confirm, minus the bad-fit one) -->
-  <div class="sec">
-    <p class="lead-in">A few things people ask me before we talk:</p>
+  <hr class="divide">
+
+  <!-- PROOF: the work those texts turn into (real completed jobs, names only) -->
+  <div class="sec" style="margin-top:0">
+    <p class="lead anchor">Here's the kind of work this brings in.</p>
+    <figure class="job feature"><img src="/img/opt/job-5.jpg" alt="Pickleball court with built-in lights and putting green, mountain view"><figcaption>Pickleball court &amp; putting green</figcaption></figure>
+    <div class="job-wall">
+      <figure class="job"><img src="/img/opt/lynn-5.jpg" alt="Finished basement family room with wet bar and pool table"><figcaption>Finished basement</figcaption></figure>
+      <figure class="job"><img src="/img/opt/job-1.jpg" alt="Waterfront estate with pool, sport courts and full landscaping"><figcaption>Waterfront backyard</figcaption></figure>
+      <figure class="job"><img src="/img/opt/lynn-3.jpg" alt="Bathroom remodel with tub and glass shower"><figcaption>Bathroom remodel</figcaption></figure>
+      <figure class="job"><img src="/img/opt/job-17.jpg" alt="Large backyard with paver patios, walkways, sod and firepit"><figcaption>Backyard patio &amp; firepit</figcaption></figure>
+      <figure class="job"><img src="/img/opt/lynn-4.jpg" alt="Kitchen remodel with white shaker cabinets and quartz counters"><figcaption>Kitchen remodel</figcaption></figure>
+      <figure class="job"><img src="/img/opt/job-10.jpg" alt="Outdoor kitchen and bar on paver patio"><figcaption>Outdoor kitchen &amp; bar</figcaption></figure>
+      <figure class="job"><img src="/img/opt/lynn-1.jpg" alt="Finished basement kitchenette with marble island"><figcaption>Basement bar</figcaption></figure>
+      <figure class="job"><img src="/img/opt/job-14.jpg" alt="Sunken firepit lounge with stone seating walls and lawn"><figcaption>Firepit lounge</figcaption></figure>
+      <figure class="job"><img src="/img/opt/lynn-2.jpg" alt="Tiled walk-in shower with pebble floor"><figcaption>Bathroom remodel</figcaption></figure>
+    </div>
+    <p class="fine">We run the ads. Job values are estimates.</p>
+  </div>
+
+  <hr class="divide">
+
+  <!-- VIDEOS (from /confirm, minus the bad-fit one) -->
+  <div class="sec" style="margin-top:0">
+    <p class="lead anchor">A few questions people ask me first.</p>
     <div class="vgrid">
-      <div class="vcard"><div class="vembed"><iframe src="https://www.loom.com/embed/055a61825f7b4f4bbd7f926a82e2651c?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="How much does it cost?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div><div class="vlabel">How much does it cost?</div></div>
-      <div class="vcard"><div class="vembed"><iframe src="https://www.loom.com/embed/de021b5bbc7a49beaa85deb1890af822?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="What if it doesn't work?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div><div class="vlabel">What if it doesn't work?</div></div>
-      <div class="vcard"><div class="vembed"><iframe src="https://www.loom.com/embed/1e5aeef0d7f24767859680630ae11dbc?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="What do you expect from me?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div><div class="vlabel">What do you expect from me?</div></div>
-      <div class="vcard"><div class="vembed"><iframe src="https://www.loom.com/embed/711d3efd686e4afa98ee3e76f850145f?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="What happens once we start?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div><div class="vlabel">What happens once we start?</div></div>
-      <div class="vcard"><div class="vembed"><iframe src="https://www.loom.com/embed/c32560015bb2452a8276d1a1d6d9cc6c?hide_owner=true&amp;hide_share=true&amp;hideEmbedTopBar=true" title="Does going viral actually pay?" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div><div class="vlabel">Does going viral actually pay?</div></div>
+      <button class="vcard" type="button" data-loom="055a61825f7b4f4bbd7f926a82e2651c"><span class="vposter"><span class="vplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span><span class="vlabel">How much does it cost?</span></button>
+      <button class="vcard" type="button" data-loom="de021b5bbc7a49beaa85deb1890af822"><span class="vposter"><span class="vplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span><span class="vlabel">What if it doesn't work?</span></button>
+      <button class="vcard" type="button" data-loom="1e5aeef0d7f24767859680630ae11dbc"><span class="vposter"><span class="vplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span><span class="vlabel">What do you expect from me?</span></button>
+      <button class="vcard" type="button" data-loom="711d3efd686e4afa98ee3e76f850145f"><span class="vposter"><span class="vplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span><span class="vlabel">What happens once we start?</span></button>
+      <button class="vcard" type="button" data-loom="c32560015bb2452a8276d1a1d6d9cc6c"><span class="vposter"><span class="vplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span><span class="vlabel">Does going viral actually pay?</span></button>
     </div>
   </div>
+
+  <hr class="divide">
 
   <!-- BEFORE THE CALL -->
-  <div class="sec">
-    <p class="lead-in">Before our call:</p>
-    <div class="card">
-      <div class="row"><span class="rnum">1</span><p><b>Add it to your calendar.</b> <span>The invite is in your inbox. Add it now so it doesn't slip.</span></p></div>
-      <div class="row"><span class="rnum">2</span><p><b>Come ready to talk shop.</b> <span>It's a quick, no-pressure call to see if we're a good fit.</span></p></div>
-      <div class="row"><span class="rnum">3</span><p><b>Show up on time.</b> <span>If something comes up, reschedule from your email. Please don't no-show, I hold your spot.</span></p></div>
-    </div>
+  <div class="sec" style="margin-top:0">
+    <p class="lead anchor">Before we talk.</p>
+    <p class="ln first">Add the call to your calendar. The invite is in your email.</p>
+    <p class="ln">Come ready to talk about your business.</p>
+    <p class="ln">Show up on time. If you can't make it, reschedule from your email.</p>
   </div>
 
-  <p class="ps"><b>P.S.</b> Spending money on ads is scary. A while back I saved up $4,000 for it and was terrified I'd lose the whole thing. My business has quadrupled since. I won't ask you to do anything I haven't done myself, sweating the whole time.</p>
+  <p class="ln gap anchor">P.S. Spending money on ads is scary.</p>
+  <p class="ln">A while back I saved up <span class="num">$4,000</span> for it and was terrified I'd lose the whole thing.</p>
+  <p class="ln">My business has quadrupled since.</p>
+  <p class="ln">I won't ask you to do anything I haven't done myself, sweating the whole time.</p>
 
-  <p class="textus">Need to reach me before the call? Text your name and company to<br><a href="sms:+13852360675">+1 (385) 236-0675</a></p>
   <p class="sig">Talk soon,<br>Jonathan</p>
 
+  <p class="textus">Need to reach me before the call? Text your name and company to <a href="sms:+13852360675">+1 (385) 236-0675</a></p>
+
 </div>
+
+<!-- image lightbox -->
+<div class="imgbox" id="imgbox"><button class="x" id="imgboxX" aria-label="Close">&times;</button><img id="imgboxImg" src="" alt=""></div>
+<!-- video lightbox -->
+<div class="vbox" id="vbox"><button class="x" id="vboxX" aria-label="Close">&times;</button><div class="vframe"><iframe id="vboxFrame" src="" allow="fullscreen; autoplay; picture-in-picture" allowfullscreen></iframe></div></div>
+<script>
+(function(){
+  var box=document.getElementById('imgbox'),img=document.getElementById('imgboxImg'),x=document.getElementById('imgboxX');
+  document.querySelectorAll('.shotbtn').forEach(function(b){
+    b.addEventListener('click',function(){var s=b.querySelector('img');img.src=s.src;img.alt=s.alt;box.classList.add('open');document.body.style.overflow='hidden';});
+  });
+  function close(){box.classList.remove('open');img.src='';document.body.style.overflow='';}
+  x.addEventListener('click',close);
+  box.addEventListener('click',function(e){if(e.target===box)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&box.classList.contains('open'))close();});
+
+  var vb=document.getElementById('vbox'),vf=document.getElementById('vboxFrame'),vx=document.getElementById('vboxX');
+  document.querySelectorAll('.vcard').forEach(function(b){
+    b.addEventListener('click',function(){var id=b.getAttribute('data-loom');if(!id)return;vf.src='https://www.loom.com/embed/'+id+'?autoplay=1&hide_owner=true&hide_share=true&hideEmbedTopBar=true';vb.classList.add('open');document.body.style.overflow='hidden';});
+  });
+  function vclose(){vb.classList.remove('open');vf.src='';document.body.style.overflow='';}
+  vx.addEventListener('click',vclose);
+  vb.addEventListener('click',function(e){if(e.target===vb)vclose();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&vb.classList.contains('open'))vclose();});
+})();
+</script>
 
 <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
 <script>
 (function(){
   var META_PIXEL_ID = "1253053683563839"; // QQ Growth Pages pixel
-  if (META_PIXEL_ID){
+  var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  if (META_PIXEL_ID && !isLocal){
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
