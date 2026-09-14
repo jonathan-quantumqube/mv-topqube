@@ -4,30 +4,58 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apply to Work With Me</title>
+<meta name="description" content="Apply to work with Jonathan Lindsay. I help construction company owners get more of the right jobs. A few quick questions to see if we're a fit.">
 <meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://mv.topqube.com/funnel/">
+<meta name="theme-color" content="#155eef">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/favicon-32.png">
+<!-- share preview (texts, Messenger, socials) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantum Qube">
+<meta property="og:title" content="Apply to Work With Me">
+<meta property="og:description" content="I help construction company owners get more of the right jobs. Answer a few quick questions to see if we're a fit.">
+<meta property="og:url" content="https://mv.topqube.com/funnel/">
+<meta property="og:image" content="https://mv.topqube.com/img/opt/og-funnel.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A finished backyard with a pickleball court and putting green">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apply to Work With Me">
+<meta name="twitter:description" content="I help construction company owners get more of the right jobs. See if we're a fit.">
+<meta name="twitter:image" content="https://mv.topqube.com/img/opt/og-funnel.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
   :root{
     --blue:#155eef; --blue-dark:#0f4bd0; --blue-soft:#eaf1ff;
-    --ink:#14181f; --sub:#414a58; --line:#e2e6ec; --bg:#ffffff;
+    --ink:#14181f; --sub:#414a58; --line:#e2e6ec; --bg:#f5f8fd; --card:#ffffff;
     --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   }
   *{margin:0;box-sizing:border-box}
   html,body{background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
-  body{min-height:100vh;display:flex;flex-direction:column}
+  body{min-height:100vh;display:flex;flex-direction:column;
+    background:
+      radial-gradient(1100px 520px at 50% -120px, rgba(21,94,239,.20), transparent 68%),
+      linear-gradient(180deg, #e7f0ff 0%, #eef4fd 46%, var(--bg) 100%),
+      var(--bg);
+    background-attachment:fixed}
   a{color:var(--blue)}
 
   /* progress */
-  .prog{position:fixed;top:0;left:0;right:0;height:6px;background:#eef0f3;z-index:10}
-  .prog__fill{height:100%;width:0;background:var(--blue);transition:width .35s ease}
+  .prog{position:fixed;top:0;left:0;right:0;height:6px;background:#e6eaf2;z-index:10}
+  .prog__fill{height:100%;width:0;background:linear-gradient(90deg,#3a78ff,#155eef);transition:width .45s cubic-bezier(.4,0,.2,1)}
+  .prog__pct{position:fixed;top:12px;right:14px;z-index:10;font-size:12.5px;font-weight:700;color:var(--blue);background:#fff;border:1px solid var(--line);border-radius:100px;padding:3px 10px;box-shadow:0 2px 8px -2px rgba(20,30,60,.14)}
 
   .wrap{width:100%;max-width:780px;margin:0 auto;padding:60px 20px 48px;flex:1;display:flex;flex-direction:column;justify-content:center}
 
   .screen{display:none;animation:fade .35s ease}
-  .screen:not(.final-wrap){max-width:520px;margin-left:auto;margin-right:auto;width:100%}
+  .screen:not(.final-wrap){max-width:520px;margin-left:auto;margin-right:auto;width:100%;
+    background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 30px;
+    box-shadow:0 30px 70px -46px rgba(20,30,60,.5)}
+  @media (max-width:600px){ .screen:not(.final-wrap){padding:26px 20px;border-radius:16px} }
   .screen.active{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
@@ -55,6 +83,9 @@
   .opts--visual .opt{padding:19px 18px;gap:14px}
   .opts--visual .ic{font-size:25px;line-height:1;flex:none}
   .opts--visual .olabel{flex:1;text-align:left}
+  .opts--visual .ostack{flex:1;display:flex;flex-direction:column;gap:3px;text-align:left}
+  .opts--visual .ostack .olabel{flex:none}
+  .osub{font-size:13px;color:var(--sub);font-weight:500;line-height:1.35}
 
   .fields{display:flex;flex-direction:column;gap:12px}
   .field{opacity:0;max-height:0;overflow:hidden;transition:opacity .3s,max-height .3s}
@@ -97,11 +128,12 @@
 <body>
 
 <div class="prog"><div class="prog__fill" id="prog"></div></div>
+<div class="prog__pct" id="progPct">30%</div>
 
 <div class="wrap" id="wrap">
 
   <!-- ============ 1. INTRO + OWNER ============ -->
-  <section class="screen active" data-p="20" id="s-intro">
+  <section class="screen active" data-p="30" id="s-intro">
     <h1>Apply to Work With Me</h1>
     <p class="sub">I have <b id="n1">6</b> clients and am only taking on <b id="n2">4</b> more right now.</p>
     <div class="qhead" style="margin-top:30px"><p class="q">Do you own or run a construction company?</p></div>
@@ -113,7 +145,7 @@
   </section>
 
   <!-- ============ 2. REVENUE ============ -->
-  <section class="screen" data-p="45" id="s-revenue">
+  <section class="screen" data-p="50" id="s-revenue">
     <button class="back" data-back>&lsaquo; Back</button>
     <div class="qhead"><p class="q">How much is your company doing per year right now?</p></div>
     <div class="opts">
@@ -126,20 +158,22 @@
   </section>
 
   <!-- ============ 3. BUDGET REALITY CHECK (only under $750k) ============ -->
-  <section class="screen" data-p="55" id="s-budget">
+  <section class="screen" data-p="58" id="s-budget">
     <button class="back" data-back>&lsaquo; Back</button>
     <div class="qhead">
-      <p class="q">Before you go further, real talk on cost.</p>
-      <p class="q-sub">Working with me runs <b>$1,000 to $3,000 a month</b>, and to make ads work you'll want at least <b>$5,000 set aside for ad spend</b> to start. If you're not there yet, this isn't the right fit right now, and that's okay.</p>
+      <p class="q">Before you go further, here's what it costs to work with me.</p>
+      <p class="q-sub">Working with me is <b>$1,000 to $3,000 a month</b>, or a <b>one-time fee of $2,500</b>.</p>
+      <p class="q-sub">You'll also want at least <b>$5,000 set aside for ads</b> when you start.</p>
+      <p class="q-sub">If that's more than you want to spend right now, this probably isn't the best fit yet. I still want to help you, and that's okay.</p>
     </div>
-    <div class="opts">
-      <button class="opt" data-budget="ready" data-go="s-want">I'm ready to invest <span class="arw">&rarr;</span></button>
-      <button class="opt" data-budget="notyet" data-go="s-decline-budget">Not yet <span class="arw">&rarr;</span></button>
+    <div class="opts opts--visual">
+      <button class="opt" data-budget="ready" data-go="s-want"><span class="ic">&#128176;</span><span class="ostack"><span class="olabel">I'm ready to invest</span><span class="osub">I have $2,500 I could put toward marketing right now.</span></span><span class="arw">&rarr;</span></button>
+      <button class="opt" data-budget="notyet" data-go="s-decline-budget"><span class="ic">&#128241;</span><span class="ostack"><span class="olabel">Not yet</span><span class="osub">Send me the free stuff and I'll follow along for now.</span></span><span class="arw">&rarr;</span></button>
     </div>
   </section>
 
   <!-- ============ 4. WHAT DO YOU WANT ============ -->
-  <section class="screen" data-p="65" id="s-want">
+  <section class="screen" data-p="68" id="s-want">
     <button class="back" data-back>&lsaquo; Back</button>
     <div class="qhead"><p class="q">What do you want most right now?</p></div>
     <div class="opts opts--visual">
@@ -151,20 +185,20 @@
   </section>
 
   <!-- ============ 5. CONTACT ============ -->
-  <section class="screen" data-p="82" id="s-contact">
+  <section class="screen" data-p="84" id="s-contact">
     <button class="back" data-back>&lsaquo; Back</button>
-    <div class="qhead"><p class="q">Last step. Where should I send the details?</p></div>
+    <div class="qhead"><p class="q">Last step before we talk.</p><p class="dim center" style="margin-top:8px">Add your details, then you'll grab a time for our call on the next screen.</p></div>
     <div class="fields">
       <div class="field show" id="f-name"><label>Your name</label><input id="i-name" type="text" autocomplete="name" placeholder="First and last name"></div>
       <div class="field" id="f-company"><label>Company name</label><input id="i-company" type="text" autocomplete="organization" placeholder="Your company"></div>
       <div class="field" id="f-phone"><label>Cell phone</label><input id="i-phone" type="tel" autocomplete="tel" placeholder="(000) 000-0000"></div>
       <div class="field" id="f-email"><label>Email</label><input id="i-email" type="email" autocomplete="email" placeholder="you@company.com"></div>
     </div>
-    <button class="btn" id="submitBtn" disabled>Next &rarr;</button>
+    <button class="btn" id="submitBtn" disabled>Pick my call time &rarr;</button>
   </section>
 
   <!-- ============ 6. FINAL STEP / CALENDAR ============ -->
-  <section class="screen final-wrap" data-p="97" id="s-calendar">
+  <section class="screen final-wrap" data-p="94" id="s-calendar">
     <h1 class="final">Your application is only complete <u>once you book your call.</u></h1>
     <p class="dim center">Leaving this page erases your answers, and your application won't be reviewed. Grab the soonest time that works.</p>
     <div class="book-card">
@@ -178,6 +212,9 @@
   <section class="screen" data-p="100" id="s-decline-owner">
     <h1>Thanks for stopping by.</h1>
     <p class="dim center">This one's built specifically for construction company owners. If that's not you, it won't be the right fit, and I'd rather be straight with you than waste your time.</p>
+    <div class="opts" style="margin-top:24px">
+      <button class="opt" data-ownerfix="1" data-go="s-revenue">Wait, I do own or run a construction company <span class="arw">&rarr;</span></button>
+    </div>
   </section>
 
   <section class="screen" data-p="100" id="s-decline-budget">
@@ -224,19 +261,23 @@
   var started = false;
 
   var prog = document.getElementById('prog');
+  var progPct = document.getElementById('progPct');
+  function setProg(p){ prog.style.width = p + '%'; if(progPct){ progPct.textContent = p + '%'; progPct.style.display = (p>=100?'none':'block'); } }
   function show(id){
     var next = document.getElementById(id);
     var cur = document.querySelector('.screen.active');
     if(cur === next) return;
     if(cur){ cur.classList.remove('active'); if(cur.id !== id) history.push(cur.id); }
     next.classList.add('active');
-    prog.style.width = (next.getAttribute('data-p')||'0') + '%';
+    setProg(parseInt(next.getAttribute('data-p')||'0',10));
     window.scrollTo(0,0);
     // first interaction = form start. Custom event (safe to OPTIMIZE on for volume).
     // Kept OFF the standard "Lead" event so "Lead" stays qualified-only.
     if(!started){ started = true; fb('trackCustom','FunnelStart',{}); }
   }
-  function goBack(){ var prev = history.pop(); if(prev){ var cur=document.querySelector('.screen.active'); cur.classList.remove('active'); var p=document.getElementById(prev); p.classList.add('active'); prog.style.width=(p.getAttribute('data-p')||'0')+'%'; window.scrollTo(0,0);} }
+  function goBack(){ var prev = history.pop(); if(prev){ var cur=document.querySelector('.screen.active'); cur.classList.remove('active'); var p=document.getElementById(prev); p.classList.add('active'); setProg(parseInt(p.getAttribute('data-p')||'0',10)); window.scrollTo(0,0);} }
+  // set initial bar to the active screen on load
+  (function(){ var a=document.querySelector('.screen.active'); if(a) setProg(parseInt(a.getAttribute('data-p')||'0',10)); })();
 
   /* ---------- option buttons ---------- */
   document.querySelectorAll('.opt').forEach(function(btn){
@@ -245,6 +286,7 @@
       if(btn.dataset.budget) answers.budget = btn.dataset.budget;
       if(btn.dataset.want) answers.want = btn.dataset.want;
       if(btn.closest('#s-intro')) answers.owner = (btn.dataset.go === 's-decline-owner') ? 'no' : 'yes';
+      if(btn.dataset.ownerfix) answers.owner = 'yes';
       var go = btn.dataset.go;
       if(go) show(go);
     });
@@ -265,6 +307,9 @@
     var ready = iName.value.trim().length>1 && iCo.value.trim().length>0 && phoneOk(iPh.value) && emailOk(iEm.value);
     submitBtn.disabled = !ready;
   }
+  /* live phone formatting: (385) 236-0675 */
+  function fmtPhone(v){ var d=v.replace(/\D/g,'').slice(0,10); if(!d) return ''; if(d.length<4) return '('+d; if(d.length<7) return '('+d.slice(0,3)+') '+d.slice(3); return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6); }
+  iPh.addEventListener('input', function(){ iPh.value = fmtPhone(iPh.value); });
   [iName,iCo,iPh,iEm].forEach(function(el){ el.addEventListener('input', refresh); });
 
   /* ---------- webhook ---------- */
