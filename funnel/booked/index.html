@@ -39,6 +39,11 @@
   img{max-width:100%;display:block}
   a{color:var(--blue)}
 
+  /* progress bar — continuity with the funnel (they finished at 94%, now 99%) */
+  .prog{position:fixed;top:0;left:0;right:0;height:6px;background:#e6eaf2;z-index:10}
+  .prog__fill{height:100%;width:94%;background:linear-gradient(90deg,#3a78ff,#155eef);transition:width .8s cubic-bezier(.4,0,.2,1)}
+  .prog__pct{position:fixed;top:12px;right:14px;z-index:10;font-size:12.5px;font-weight:700;color:var(--blue);background:#fff;border:1px solid var(--line);border-radius:100px;padding:3px 10px;box-shadow:0 2px 8px -2px rgba(20,30,60,.14)}
+
   .wrap{width:100%;max-width:560px;margin:0 auto;padding:56px 24px 60px}
 
   .hook{font-size:clamp(30px,7.4vw,42px);line-height:1.08;font-weight:800;letter-spacing:-.02em;color:var(--red);margin-bottom:30px}
@@ -115,6 +120,8 @@
 </style>
 </head>
 <body>
+<div class="prog"><div class="prog__fill" id="prog"></div></div>
+<div class="prog__pct">99%</div>
 <div class="wrap">
 
   <p class="hook">Most marketing is a scam.</p>
@@ -216,6 +223,10 @@
 <div class="vbox" id="vbox"><button class="x" id="vboxX" aria-label="Close">&times;</button><div class="vframe"><iframe id="vboxFrame" src="" allow="fullscreen; autoplay; picture-in-picture" allowfullscreen></iframe></div></div>
 <script>
 (function(){
+  // progress bar animates 94% -> 99% on load (continuity with the funnel)
+  var pf=document.getElementById('prog');
+  if(pf){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ pf.style.width='99%'; }); }); }
+
   var box=document.getElementById('imgbox'),img=document.getElementById('imgboxImg'),x=document.getElementById('imgboxX');
   document.querySelectorAll('.shotbtn').forEach(function(b){
     b.addEventListener('click',function(){var s=b.querySelector('img');img.src=s.src;img.alt=s.alt;box.classList.add('open');document.body.style.overflow='hidden';});

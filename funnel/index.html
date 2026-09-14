@@ -407,18 +407,6 @@
     }
   });
 
-  /* ---------- preview helper (STAGING ONLY - remove before going to main domain) ----------
-     Visit the page with a hash to jump straight to an end screen:
-       #calendar         -> the final-step calendar page
-       #decline-budget   -> the "not ready" YouTube/Instagram off-ramp
-       #decline-owner    -> the "not a construction owner" screen                     */
-  (function(){
-    var map = {'#calendar':'s-calendar','#decline-budget':'s-decline-budget','#decline-owner':'s-decline-owner'};
-    function jump(){ var t = map[location.hash]; if(t){ if(location.hash==='#calendar') buildCalendar(); show(t); } }
-    if(location.hash) jump();
-    window.addEventListener('hashchange', jump);
-  })();
-
 })();
 </script>
 </body>
