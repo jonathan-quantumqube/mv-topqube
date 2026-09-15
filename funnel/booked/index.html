@@ -259,7 +259,21 @@
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', META_PIXEL_ID); fbq('track','PageView');
-    fbq('track','Schedule'); fbq('trackCustom','BookedCall');
+
+    /* Booking event: once per booking, not once per page load. */
+    (function(){
+      var KEY = 'qq_booked_last';
+      var WINDOW_MS = 6 * 60 * 60 * 1000;   // 6 hours
+      var now = Date.now();
+      try {
+        var last = parseInt(localStorage.getItem(KEY) || '0', 10);
+        if (now - last < WINDOW_MS) return;  // already counted this booking
+        localStorage.setItem(KEY, String(now));
+      } catch (e) {
+        /* storage blocked (private mode): fall through and fire once */
+      }
+      fbq('track', 'Schedule', {}, { eventID: 'booked-' + now });
+    })();
   }
 })();
 </script>
