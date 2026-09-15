@@ -398,15 +398,6 @@
     show('s-calendar');
   });
 
-  /* ---------- booked-call signal (best effort from GHL iframe) ---------- */
-  window.addEventListener('message', function(e){
-    var d = e.data;
-    var s = (typeof d === 'string') ? d : (d && (d.type||d.event||''));
-    if(typeof s === 'string' && /book|appointment|scheduled|confirm/i.test(s)){
-      fb('trackCustom','BookedCall',{});
-    }
-  });
-
 })();
 </script>
 </body>
