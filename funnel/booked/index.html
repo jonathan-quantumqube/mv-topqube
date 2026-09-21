@@ -251,7 +251,9 @@
 <script>
 (function(){
   var META_PIXEL_ID = "1253053683563839"; // QQ Growth Pages pixel
+  var GA_ID = "G-CJ2E528Y4H";             // Top Qube property (shared with topqube.com)
   var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+
   if (META_PIXEL_ID && !isLocal){
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -259,22 +261,32 @@
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', META_PIXEL_ID); fbq('track','PageView');
-
-    /* Booking event: once per booking, not once per page load. */
-    (function(){
-      var KEY = 'qq_booked_last';
-      var WINDOW_MS = 6 * 60 * 60 * 1000;   // 6 hours
-      var now = Date.now();
-      try {
-        var last = parseInt(localStorage.getItem(KEY) || '0', 10);
-        if (now - last < WINDOW_MS) return;  // already counted this booking
-        localStorage.setItem(KEY, String(now));
-      } catch (e) {
-        /* storage blocked (private mode): fall through and fire once */
-      }
-      fbq('track', 'Schedule', {}, { eventID: 'booked-' + now });
-    })();
   }
+  if (GA_ID && !isLocal){
+    var gs=document.createElement('script'); gs.async=true;
+    gs.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(gs);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  /* Booking event: once per booking, not once per page load. */
+  (function(){
+    var KEY = 'qq_booked_last';
+    var WINDOW_MS = 6 * 60 * 60 * 1000;   // 6 hours
+    var now = Date.now();
+    try {
+      var last = parseInt(localStorage.getItem(KEY) || '0', 10);
+      if (now - last < WINDOW_MS) return;  // already counted this booking
+      localStorage.setItem(KEY, String(now));
+    } catch (e) {
+      /* storage blocked (private mode): fall through and fire once */
+    }
+    if (META_PIXEL_ID && !isLocal && window.fbq){ fbq('track', 'Schedule', {}, { eventID: 'booked-' + now }); }
+    if (GA_ID && !isLocal && window.gtag){ gtag('event', 'booking_confirmed', { transaction_id: 'booked-' + now }); }
+  })();
 })();
 </script>
 </body>

@@ -253,6 +253,30 @@
   }
   function fb(type, name, params){ if(META_PIXEL_ID && !isLocal && window.fbq){ try{ fbq(type, name, params||{}); }catch(e){} } }
 
+  /* ---------- Google Analytics 4 (funnel step tracking; never on localhost) ---------- */
+  var GA_ID = "G-CJ2E528Y4H"; // Top Qube property (shared with topqube.com)
+  if (GA_ID && !isLocal){
+    var gs=document.createElement('script'); gs.async=true;
+    gs.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(gs);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+  function ga(name, params){ if(GA_ID && !isLocal && window.gtag){ try{ gtag('event', name, params||{}); }catch(e){} } }
+  var STEP_MAP = {
+    's-intro':          { step:1, step_name:'1. Landed (owner?)' },
+    's-revenue':        { step:2, step_name:'2. Revenue' },
+    's-budget':         { step:3, step_name:'3. Budget' },
+    's-want':           { step:4, step_name:'4. What they want' },
+    's-contact':        { step:5, step_name:'5. Contact info' },
+    's-calendar':       { step:6, step_name:'6. Reached calendar' },
+    's-decline-owner':  { step:0, step_name:'Declined: not an owner' },
+    's-decline-budget': { step:0, step_name:'Declined: budget' }
+  };
+  function gaStep(id){ var m = STEP_MAP[id]; if(m){ ga('funnel_step', { step:m.step, step_id:id, step_name:m.step_name }); } }
+
   /* ---------- state ---------- */
   var lead_id = 'ld_' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
   var answers = { owner:null, revenue:null, budget:null, want:null, name:'', company:'', phone:'', email:'' };
@@ -273,10 +297,11 @@
     // first interaction = form start. Custom event (safe to OPTIMIZE on for volume).
     // Kept OFF the standard "Lead" event so "Lead" stays qualified-only.
     if(!started){ started = true; fb('trackCustom','FunnelStart',{}); }
+    gaStep(id);
   }
   function goBack(){ var prev = history.pop(); if(prev){ var cur=document.querySelector('.screen.active'); cur.classList.remove('active'); var p=document.getElementById(prev); p.classList.add('active'); setProg(parseInt(p.getAttribute('data-p')||'0',10)); window.scrollTo(0,0);} }
   // set initial bar to the active screen on load
-  (function(){ var a=document.querySelector('.screen.active'); if(a) setProg(parseInt(a.getAttribute('data-p')||'0',10)); })();
+  (function(){ var a=document.querySelector('.screen.active'); if(a){ setProg(parseInt(a.getAttribute('data-p')||'0',10)); gaStep(a.id); } })();
 
   /* ---------- option buttons ---------- */
   document.querySelectorAll('.opt').forEach(function(btn){
@@ -389,6 +414,7 @@
   submitBtn.addEventListener('click', function(){
     if(submitBtn.disabled) return;
     postWebhook('qualified'); // always send the lead to me (GHL)
+    ga('generate_lead', { qualified: (answers.revenue !== 'under'), revenue: answers.revenue, wants: answers.want });
     // Under $750k/mo: send to me but do NOT tell Meta to optimize toward them.
     if(answers.revenue !== 'under'){
       fb('track','Lead',{content_name:'qualified_application'});
