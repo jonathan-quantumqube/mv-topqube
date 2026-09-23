@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Microsoft Clarity (Sales Pages v.2 project) — skips localhost so dev sessions stay out -->
+<script type="text/javascript">
+  if(!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xvbymzl6yf");
+  }
+</script>
 <title>Apply to Work With Me</title>
 <meta name="description" content="Apply to work with Jonathan Lindsay. I help construction company owners get more of the right jobs. A few quick questions to see if we're a fit.">
 <meta name="robots" content="noindex, nofollow">
@@ -265,17 +275,22 @@
     gtag('config', GA_ID);
   }
   function ga(name, params){ if(GA_ID && !isLocal && window.gtag){ try{ gtag('event', name, params||{}); }catch(e){} } }
+  // step -> {GA step number/name, Meta custom event}. Meta names are alnum (Events Manager reads them cleanly).
   var STEP_MAP = {
-    's-intro':          { step:1, step_name:'1. Landed (owner?)' },
-    's-revenue':        { step:2, step_name:'2. Revenue' },
-    's-budget':         { step:3, step_name:'3. Budget' },
-    's-want':           { step:4, step_name:'4. What they want' },
-    's-contact':        { step:5, step_name:'5. Contact info' },
-    's-calendar':       { step:6, step_name:'6. Reached calendar' },
-    's-decline-owner':  { step:0, step_name:'Declined: not an owner' },
-    's-decline-budget': { step:0, step_name:'Declined: budget' }
+    's-intro':          { step:1, step_name:'1. Landed (owner?)',      ev:null            }, // PageView + FunnelStart already cover the top
+    's-revenue':        { step:2, step_name:'2. Revenue',             ev:'Step2Revenue'  },
+    's-budget':         { step:3, step_name:'3. Budget',              ev:'Step3Budget'   },
+    's-want':           { step:4, step_name:'4. What they want',      ev:'Step4Want'     },
+    's-contact':        { step:5, step_name:'5. Contact info',        ev:'Step5Contact'  },
+    's-calendar':       { step:6, step_name:'6. Reached calendar',    ev:'Step6Calendar' },
+    's-decline-owner':  { step:0, step_name:'Declined: not an owner', ev:'DeclinedOwner' },
+    's-decline-budget': { step:0, step_name:'Declined: budget',       ev:'DeclinedBudget'}
   };
-  function gaStep(id){ var m = STEP_MAP[id]; if(m){ ga('funnel_step', { step:m.step, step_id:id, step_name:m.step_name }); } }
+  function trackStep(id){
+    var m = STEP_MAP[id]; if(!m) return;
+    ga('funnel_step', { step:m.step, step_id:id, step_name:m.step_name });   // GA4: one param'd event
+    if(m.ev) fb('trackCustom', m.ev, { step:m.step });                        // Meta: one distinct event per question
+  }
 
   /* ---------- state ---------- */
   var lead_id = 'ld_' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
@@ -297,11 +312,11 @@
     // first interaction = form start. Custom event (safe to OPTIMIZE on for volume).
     // Kept OFF the standard "Lead" event so "Lead" stays qualified-only.
     if(!started){ started = true; fb('trackCustom','FunnelStart',{}); }
-    gaStep(id);
+    trackStep(id);
   }
   function goBack(){ var prev = history.pop(); if(prev){ var cur=document.querySelector('.screen.active'); cur.classList.remove('active'); var p=document.getElementById(prev); p.classList.add('active'); setProg(parseInt(p.getAttribute('data-p')||'0',10)); window.scrollTo(0,0);} }
   // set initial bar to the active screen on load
-  (function(){ var a=document.querySelector('.screen.active'); if(a){ setProg(parseInt(a.getAttribute('data-p')||'0',10)); gaStep(a.id); } })();
+  (function(){ var a=document.querySelector('.screen.active'); if(a){ setProg(parseInt(a.getAttribute('data-p')||'0',10)); trackStep(a.id); } })();
 
   /* ---------- option buttons ---------- */
   document.querySelectorAll('.opt').forEach(function(btn){
