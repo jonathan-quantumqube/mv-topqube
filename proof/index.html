@@ -29,31 +29,44 @@
     font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;}
   img{max-width:100%;display:block}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
   h1,h2,h3{color:var(--ink);line-height:1.15;margin:0;letter-spacing:-.02em}
 
-  .top{padding:26px 0 0}
-  .brand{font-weight:800;color:var(--ink);letter-spacing:-.02em;font-size:17px}
+  /* sticky section nav */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+  .navrow{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+  .brand{font-weight:800;color:var(--ink);letter-spacing:-.02em;font-size:17px;text-decoration:none;white-space:nowrap}
   .brand span{color:var(--blue)}
+  .navlinks{display:flex;gap:26px}
+  .navlinks a{color:var(--body);text-decoration:none;font-weight:600;font-size:14.5px;white-space:nowrap}
+  .navlinks a:hover{color:var(--blue)}
 
-  .head{text-align:center;padding:46px 0 8px}
-  .head .eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
-  .head h1{font-size:clamp(34px,7vw,60px);font-weight:800}
-  .head p{font-size:clamp(16px,2.3vw,19px);color:var(--body);max-width:34ch;margin:16px auto 0}
+  /* hero — left aligned, consistent with sections */
+  .head{padding:56px 0 16px}
+  .head .eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+  .head h1{font-size:clamp(32px,5vw,52px);font-weight:800;max-width:17ch;text-wrap:balance}
+  .head p{font-size:clamp(16px,2.1vw,19px);color:var(--body);max-width:52ch;margin:16px 0 0}
+  .jump{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .jump a{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:#fff;border-radius:999px;
+    padding:12px 18px;font-weight:600;font-size:15px;color:var(--ink);text-decoration:none;
+    box-shadow:0 2px 8px rgba(11,16,32,.04);transition:border-color .12s,color .12s,transform .08s}
+  .jump a:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+  .jump a .ic{font-size:17px;line-height:1}
 
-  section{padding:44px 0}
-  .slabel{margin:0 0 20px}
-  .slabel h2{font-size:clamp(22px,3.4vw,28px);font-weight:800}
-  .slabel .sub{font-size:15px;color:var(--muted);margin-top:6px}
+  /* sections — consistent padding + anchor offset */
+  section{padding:52px 0;scroll-margin-top:76px}
+  .slabel{margin:0 0 26px}
+  .slabel h2{font-size:clamp(23px,3.2vw,30px);font-weight:800}
+  .slabel .sub{font-size:15px;color:var(--muted);margin-top:7px;max-width:60ch}
   .divider{height:1px;background:var(--line);border:0;margin:0}
 
-  /* videos — all portrait + uniform, 3-across desktop / stacked mobile, never cropped */
-  .vids{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:760px;margin:0 auto}
+  /* videos — all portrait + uniform, left-aligned row, never cropped */
+  .vids{display:grid;grid-template-columns:repeat(3,minmax(0,232px));gap:18px}
   .vid{background:#0b1020;border-radius:var(--radius);overflow:hidden;box-shadow:0 14px 34px rgba(11,16,32,.14)}
   .vid video{width:100%;height:auto;display:block;background:#0b1020}
-  .vid .meta{display:flex;align-items:center;gap:9px;padding:13px 16px;color:#fff}
-  .vid .meta .nm{font-weight:700;font-size:15px}
-  .vid .meta .co{font-size:13px;color:#aab6cc}
+  .vid .meta{display:flex;align-items:center;gap:9px;padding:13px 15px;color:#fff}
+  .vid .meta .nm{font-weight:700;font-size:14px}
+  .vid .meta .co{font-size:12.5px;color:#aab6cc}
   .vid .meta .dot{color:#55627a}
 
   /* reviews — full screenshots, masonry, no crop */
@@ -64,7 +77,7 @@
   .reviews img{width:100%}
 
   /* projects — uniform cards, consistent aspect, value shown */
-  .projgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:16px}
+  .projgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
   .proj{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;cursor:zoom-in;
     box-shadow:0 5px 16px rgba(11,16,32,.05);transition:transform .1s,box-shadow .15s;display:flex;flex-direction:column}
   .proj:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(11,16,32,.1)}
@@ -72,44 +85,66 @@
   .proj .cap{padding:11px 13px}
   .proj .val{display:block;color:var(--green);font-weight:800;font-size:18px;letter-spacing:-.01em}
   .proj .ty{display:block;font-size:13px;color:var(--body);margin-top:1px;line-height:1.35}
-  .note{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
+  .note{color:var(--muted);font-size:13px;margin-top:22px}
 
-  .cta{background:var(--soft);border-radius:var(--radius);text-align:center;padding:40px 24px;margin-top:8px}
-  .cta h2{font-size:clamp(22px,3.4vw,30px);margin-bottom:10px}
-  .cta p{color:var(--body);margin:0 0 22px}
+  /* cta band */
+  .cta{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);text-align:center;padding:44px 24px}
+  .cta h2{font-size:clamp(23px,3.4vw,30px);margin-bottom:10px}
+  .cta p{color:var(--body);margin:0 0 24px}
   .btn{display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-size:17px;
     padding:16px 34px;border-radius:999px;text-decoration:none;box-shadow:0 10px 24px rgba(21,94,239,.26);transition:transform .08s,background .15s}
   .btn:hover{background:#0f49c4;transform:translateY(-1px)}
-  footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}
+  footer{padding:40px 0 60px;color:var(--muted);font-size:13px}
 
   .lb{position:fixed;inset:0;background:rgba(6,10,20,.92);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
   .lb.open{display:flex}
   .lb img{max-width:100%;max-height:92vh;border-radius:10px}
   .lb .x{position:absolute;top:14px;right:20px;color:#fff;font-size:36px;cursor:pointer;line-height:1}
 
-  @media(max-width:720px){
-    section{padding:34px 0}
+  @media(max-width:760px){
+    section{padding:40px 0}
     .vids{grid-template-columns:1fr;max-width:420px}
+    .navlinks{gap:16px}
+    .navlinks a{font-size:13px}
+  }
+  @media(max-width:620px){
     .reviews{columns:2 150px}
     .projgrid{grid-template-columns:repeat(2,1fr)}
+    .navlinks a:first-child{display:none} /* keep nav from crowding on tiny screens */
   }
   @media(max-width:400px){ .reviews{columns:1} }
 </style>
 </head>
-<body>
+<body id="top">
 
-<div class="wrap top"><div class="brand">Quantum <span>Qube</span></div></div>
+<!-- sticky section nav -->
+<header class="nav">
+  <div class="wrap navrow">
+    <a class="brand" href="#top">Quantum <span>Qube</span></a>
+    <nav class="navlinks">
+      <a href="#videos">Video reviews</a>
+      <a href="#texts">Client texts</a>
+      <a href="#leads">The leads</a>
+    </nav>
+  </div>
+</header>
 
+<!-- HERO -->
 <div class="wrap head">
   <p class="eyebrow">Proof</p>
   <h1>Here are the results we've gotten for our clients.</h1>
-  <p>Real contractors, real estimate requests, real texts. No stock, no filler.</p>
+  <p>Real contractors, real estimate requests, real texts. No stock, no filler. Jump to what you want to see:</p>
+  <div class="jump">
+    <a href="#videos"><span class="ic">&#127909;</span> Watch contractor reviews</a>
+    <a href="#texts"><span class="ic">&#128172;</span> See screenshots from our clients</a>
+    <a href="#leads"><span class="ic">&#128200;</span> See the quotes our work brings in</a>
+  </div>
 </div>
 
 <!-- VIDEOS -->
-<section>
+<section id="videos">
   <div class="wrap">
-    <div class="slabel"><h2>Hear it from them</h2></div>
+    <div class="slabel"><h2>Hear it from them</h2><div class="sub">Contractors we work with, in their own words.</div></div>
     <div class="vids">
       <div class="vid">
         <video src="/img/opt/proof/jackson.mp4" poster="/img/opt/proof/jackson.jpg" controls preload="none" playsinline data-vid="jackson"></video>
@@ -129,25 +164,25 @@
 
 <hr class="divider">
 
-<!-- REVIEWS -->
-<section>
+<!-- REVIEWS / CLIENT TEXTS -->
+<section id="texts">
   <div class="wrap">
-    <div class="slabel"><h2>What our clients say</h2></div>
+    <div class="slabel"><h2>Screenshots from our clients</h2><div class="sub">Real texts from the contractors we run ads for.</div></div>
     <div class="reviews" id="reviews"></div>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- PROJECTS -->
-<section>
+<!-- PROJECTS / LEADS -->
+<section id="leads">
   <div class="wrap">
     <div class="slabel">
-      <h2>The leads this brings in</h2>
-      <div class="sub">Basement finishes, whole-home remodels, kitchens and baths, decks, and outdoor living.</div>
+      <h2>The quotes our work brings in</h2>
+      <div class="sub">Every real estimate request we've generated, across all our clients. Basement finishes, whole-home remodels, decks, and outdoor living.</div>
     </div>
     <div class="projgrid" id="projgrid"></div>
-    <p class="note">Real estimate requests from homeowners. Values are estimated from the project scope and budget. A sample, not every lead.</p>
+    <p class="note">Real estimate requests from homeowners, names and numbers removed. Values are estimated from the project scope and budget.</p>
   </div>
 </section>
 
@@ -162,7 +197,7 @@
   </div>
 </section>
 
-<footer>&copy; Quantum Qube &middot; Built for construction companies</footer>
+<footer><div class="wrap">&copy; Quantum Qube &middot; Built for construction companies</div></footer>
 
 <div class="lb" id="lb"><span class="x" id="lbx">&times;</span><img id="lbimg" src="" alt=""></div>
 
@@ -202,7 +237,7 @@
   });
 
   var pg=document.getElementById('projgrid');
-  projects.forEach(function(p){
+  (window.projects||[]).forEach(function(p){
     var full='/img/opt/proof/'+p[0]+'.jpg';
     var d=document.createElement('div'); d.className='proj';
     d.innerHTML='<img src="'+full+'" alt="Estimate request" loading="lazy" data-full="'+full+'">'+
@@ -221,6 +256,9 @@
 
   document.querySelectorAll('video[data-vid]').forEach(function(v){
     v.addEventListener('play', function(){ fb('trackCustom','ProofVideoPlay',{who:v.getAttribute('data-vid')}); ga('proof_video_play',{who:v.getAttribute('data-vid')}); }, {once:true});
+  });
+  document.querySelectorAll('.jump a, .navlinks a').forEach(function(a){
+    a.addEventListener('click', function(){ ga('proof_jump',{to:a.getAttribute('href')}); });
   });
   document.querySelectorAll('a.js-book').forEach(function(a){
     a.addEventListener('click', function(){ fb('trackCustom','ProofBookClick',{}); ga('proof_book_click',{}); });
