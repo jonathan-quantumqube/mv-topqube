@@ -1,3 +1,6 @@
 # mv.topqube.com root serves the application funnel (single source: /funnel/).
 # Old "595 leads" book-a-call page still lives at /index.html. /confirm is kept as-is.
 /    /funnel/    200!
+
+# Instagram bio link -> proof page (tagged for GA)
+/ig    /proof/?utm_source=instagram&utm_medium=social&utm_campaign=bio    302
