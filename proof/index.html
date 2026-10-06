@@ -113,15 +113,15 @@
     <div class="vids">
       <div class="vid">
         <video src="/img/opt/proof/jackson.mp4" poster="/img/opt/proof/jackson.jpg" controls preload="none" playsinline data-vid="jackson"></video>
-        <div class="meta"><span class="nm">Jackson</span><span class="dot">&middot;</span><span class="co">J&amp;H Landscaping</span></div>
+        <div class="meta"><span class="nm">J&amp;H Landscaping</span><span class="dot">&middot;</span><span class="co">Utah</span></div>
       </div>
       <div class="vid">
         <video src="/img/opt/proof/john.mp4" poster="/img/opt/proof/john.jpg" controls preload="none" playsinline data-vid="john"></video>
-        <div class="meta"><span class="nm">Jon</span><span class="dot">&middot;</span><span class="co">Colorado Elite Outdoor</span></div>
+        <div class="meta"><span class="nm">Colorado Elite Outdoor</span><span class="dot">&middot;</span><span class="co">Colorado</span></div>
       </div>
       <div class="vid">
         <video src="/img/opt/proof/john2.mp4" poster="/img/opt/proof/john2.jpg" controls preload="none" playsinline data-vid="john2"></video>
-        <div class="meta"><span class="nm">Jon</span><span class="dot">&middot;</span><span class="co">"3 estimates a day"</span></div>
+        <div class="meta"><span class="nm">Colorado Elite</span><span class="dot">&middot;</span><span class="co">"3 estimates a day"</span></div>
       </div>
     </div>
   </div>
@@ -147,7 +147,7 @@
       <div class="sub">Basement finishes, whole-home remodels, kitchens and baths, decks, and outdoor living.</div>
     </div>
     <div class="projgrid" id="projgrid"></div>
-    <p class="note">Real estimate requests from homeowners. Values are the homeowner's project estimate. A sample, not every lead.</p>
+    <p class="note">Real estimate requests from homeowners. Values are estimated from the project scope and budget. A sample, not every lead.</p>
   </div>
 </section>
 
@@ -189,21 +189,25 @@
 
   /* reviews (full screenshots) */
   var reviews = ['/img/opt/testimonial.jpg','/img/opt/text-1.jpg','/img/opt/text-2.jpg',
-    '/img/opt/text-3.jpg','/img/opt/text-4.jpg','/img/opt/text-5.jpg','/img/opt/text-6.jpg',
-    '/img/opt/proof/review-ceoc.jpg'];
-  /* projects: [file rank, value, type] — high to low, odd lead dropped */
+    '/img/opt/text-3.jpg','/img/opt/text-4.jpg','/img/opt/text-5.jpg','/img/opt/text-6.jpg'];
+  /* projects: [file stub, value, type] — high to low; names/phones blurred, addresses redacted */
   var projects = [
-    ['01','$142,000','Basement finish'],['02','$130,000','Full home remodel'],
-    ['03','$106,000','Basement finish'],['04','$77,000','Basement finish'],
-    ['05','$75,000','Basement finish'],['06','$73,000','Kitchen & basement remodel'],
-    ['07','$70,000','Basement finish'],['08','$70,000','Basement finish & entrance'],
-    ['10','$70,000','Landscape design, 1 acre'],['12','$65,000','Covered patio & outdoor living'],
-    ['13','$63,000','Basement finish'],['14','$61,000','Basement finish'],
-    ['15','$55,000','Backyard design, pool & garden'],['16','$55,000','Yard leveling for pool'],
-    ['17','$55,000','Backyard, pool & sport court'],['18','$52,000','Backyard landscape'],
-    ['19','$49,000','Basement floor & epoxy'],['20','$49,000','Basement finish'],
-    ['21','$47,000','Basement finish'],['22','$46,000','Full yard redo'],
-    ['23','$42,000','Windows, siding & deck']
+    ['pj-01','$142,000','Basement finish'],['pj-02','$128,000','Basement finish'],
+    ['pj-03','$106,000','Basement finish'],['pj-04','$106,000','Basement finish'],
+    ['pj-05','$104,000','Basement finish'],['pj-06','$104,000','Basement finish'],
+    ['pj-07','$100,000','Backyard & pool'],['pj-08','$100,000','Landscaping'],
+    ['pj-09','$100,000','Retaining walls & yard'],['pj-10','$94,000','Basement finish'],
+    ['pj-11','$82,000','Basement finish'],['pj-12','$80,000','Basement finish'],
+    ['pj-13','$74,000','Basement finish'],['pj-14','$70,000','Landscaping'],
+    ['pj-15','$67,000','Basement finish'],['pj-16','$65,000','Patio & pergola'],
+    ['pj-17','$65,000','Patio & outdoor living'],['pj-18','$64,000','Basement finish'],
+    ['pj-19','$60,000','Basement finish'],['pj-20','$60,000','Retaining walls & yard'],
+    ['pj-21','$60,000','New deck'],['pj-22','$55,000','Backyard & pool'],
+    ['pj-23','$52,000','Landscaping'],['pj-24','$52,000','Basement finish'],
+    ['pj-25','$50,000','Basement finish'],['pj-26','$42,000','Basement finish'],
+    ['pj-27','$42,000','Landscaping'],['pj-28','$42,000','New deck'],
+    ['pj-29','$42,000','Outdoor project'],['pj-30','$30,000','New deck'],
+    ['pj-31','$30,000','Deck & patio'],['pj-32','$26,000','Patio & pergola']
   ];
 
   var rv=document.getElementById('reviews');
@@ -216,7 +220,7 @@
 
   var pg=document.getElementById('projgrid');
   projects.forEach(function(p){
-    var full='/img/opt/proof/proj-'+p[0]+'.jpg';
+    var full='/img/opt/proof/'+p[0]+'.jpg';
     var d=document.createElement('div'); d.className='proj';
     d.innerHTML='<img src="'+full+'" alt="Estimate request" loading="lazy" data-full="'+full+'">'+
       '<div class="cap"><span class="val">'+p[1]+'</span><span class="ty">'+p[2]+'</span></div>';
