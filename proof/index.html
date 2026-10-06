@@ -93,7 +93,7 @@
   .proj{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;cursor:zoom-in;
     box-shadow:0 5px 16px rgba(11,16,32,.05);transition:transform .1s,box-shadow .15s;display:flex;flex-direction:column}
   .proj:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(11,16,32,.1)}
-  .proj img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;background:var(--soft)}
+  .proj img{width:100%;aspect-ratio:3/4;object-fit:contain;object-position:center;background:#000}
   .proj .cap{padding:11px 13px}
   .proj .val{display:block;color:var(--green);font-weight:800;font-size:18px;letter-spacing:-.01em}
   .proj .ty{display:block;font-size:13px;color:var(--body);margin-top:1px;line-height:1.35}
@@ -107,6 +107,16 @@
   footer{padding:24px 0 40px;color:var(--muted);font-size:13px}
   footer .disc{max-width:560px;margin:0 auto 10px;font-size:12.5px;line-height:1.5}
 
+  /* floating book-a-call */
+  body{padding-bottom:84px}
+  .float{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:8px;
+    background:var(--blue);color:#fff;font-weight:800;font-size:16px;text-decoration:none;white-space:nowrap;
+    padding:15px 30px;border-radius:999px;box-shadow:0 12px 30px rgba(21,94,239,.38),0 2px 6px rgba(0,0,0,.12);
+    transition:opacity .2s,transform .2s,background .15s}
+  .float:hover{background:var(--blue-d)}
+  .float.hide{opacity:0;pointer-events:none;transform:translate(-50%,12px)}
+  @media(max-width:620px){ .float{left:16px;right:16px;transform:none;justify-content:center;bottom:max(12px,env(safe-area-inset-bottom))}
+    .float.hide{transform:translateY(12px)} }
   .lb{position:fixed;inset:0;background:rgba(6,10,20,.92);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
   .lb.open{display:flex}
   .lb img{max-width:100%;max-height:92vh;border-radius:10px}
@@ -169,7 +179,7 @@
   <div class="wrap">
     <h2>Quotes we've gotten for our clients</h2>
     <div class="projgrid" id="projgrid"></div>
-    <p class="note">Names removed. Values are estimates.</p>
+    <p class="note">Dollar amounts are our estimates of each project's value, not signed contracts.</p>
   </div>
 </section>
 
@@ -181,8 +191,11 @@
   </div>
 </section>
 
+<a class="float btn-float js-book" id="floatBook" href="/book/">&#128197; Book a call &rarr;</a>
+
 <footer><div class="wrap">
   <p class="disc">These are past results for our clients, not a promise or guarantee. Your results will depend on your market, your offer, and how you follow up with leads.</p>
+  <p class="disc">Dollar amounts on the quote requests are estimated project values, based on the scope each homeowner described and typical local pricing (or the budget they gave us). They are not signed contracts or revenue. Homeowner names and contact info are removed for privacy.</p>
   &copy; Quantum Qube
 </div></footer>
 
@@ -257,6 +270,11 @@
   document.querySelectorAll('.jump a').forEach(function(a){
     a.addEventListener('click', function(){ ga('proof_jump',{to:a.getAttribute('href')}); });
   });
+  // hide the floating button while the bottom CTA is on screen
+  var fl=document.getElementById('floatBook'), cta=document.querySelector('section.cta');
+  if(fl && cta && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ fl.classList.toggle('hide', es[0].isIntersecting); }).observe(cta);
+  }
   document.querySelectorAll('a.js-book').forEach(function(a){
     a.addEventListener('click', function(){ fb('trackCustom','ProofBookClick',{}); ga('proof_book_click',{}); });
   });
