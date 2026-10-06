@@ -29,78 +29,71 @@
     font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;}
   img{max-width:100%;display:block}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
   h1,h2,h3{color:var(--ink);line-height:1.15;margin:0;letter-spacing:-.02em}
 
-  /* top wordmark */
   .top{padding:26px 0 0}
   .brand{font-weight:800;color:var(--ink);letter-spacing:-.02em;font-size:17px}
   .brand span{color:var(--blue)}
 
-  /* hero */
-  .head{text-align:center;padding:48px 0 10px}
-  .head .eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:18px}
-  .head h1{font-size:clamp(40px,9vw,72px);font-weight:800}
-  .head p{font-size:clamp(17px,2.4vw,20px);color:var(--body);max-width:30ch;margin:16px auto 0}
+  .head{text-align:center;padding:46px 0 8px}
+  .head .eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+  .head h1{font-size:clamp(34px,7vw,60px);font-weight:800}
+  .head p{font-size:clamp(16px,2.3vw,19px);color:var(--body);max-width:34ch;margin:16px auto 0}
 
-  /* sections */
-  section{padding:46px 0}
-  .slabel{display:flex;align-items:baseline;gap:12px;margin:0 0 22px}
+  section{padding:44px 0}
+  .slabel{margin:0 0 20px}
   .slabel h2{font-size:clamp(22px,3.4vw,28px);font-weight:800}
-  .slabel .count{font-size:14px;color:var(--muted);font-weight:600}
+  .slabel .sub{font-size:15px;color:var(--muted);margin-top:6px}
   .divider{height:1px;background:var(--line);border:0;margin:0}
 
-  /* videos */
-  .vids{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-  .vid{background:#0b1020;border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 40px rgba(11,16,32,.14)}
-  .vid video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#0b1020}
-  .vid .meta{display:flex;align-items:center;gap:10px;padding:14px 16px;background:#0b1020;color:#fff}
+  /* videos — all portrait + uniform, 3-across desktop / stacked mobile, never cropped */
+  .vids{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:760px;margin:0 auto}
+  .vid{background:#0b1020;border-radius:var(--radius);overflow:hidden;box-shadow:0 14px 34px rgba(11,16,32,.14)}
+  .vid video{width:100%;height:auto;display:block;background:#0b1020}
+  .vid .meta{display:flex;align-items:center;gap:9px;padding:13px 16px;color:#fff}
   .vid .meta .nm{font-weight:700;font-size:15px}
   .vid .meta .co{font-size:13px;color:#aab6cc}
   .vid .meta .dot{color:#55627a}
 
-  /* reviews — masonry via columns */
-  .reviews{columns:3 240px;column-gap:18px}
-  .reviews figure{break-inside:avoid;margin:0 0 18px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;
-    box-shadow:0 6px 18px rgba(11,16,32,.05);cursor:zoom-in;transition:transform .1s ease,box-shadow .15s ease}
-  .reviews figure:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(11,16,32,.1)}
+  /* reviews — full screenshots, masonry, no crop */
+  .reviews{columns:4 210px;column-gap:16px}
+  .reviews figure{break-inside:avoid;margin:0 0 16px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;
+    box-shadow:0 5px 16px rgba(11,16,32,.05);cursor:zoom-in;transition:transform .1s,box-shadow .15s}
+  .reviews figure:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(11,16,32,.1)}
   .reviews img{width:100%}
 
-  /* projects */
-  .projgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  /* projects — uniform cards, consistent aspect, value shown */
+  .projgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:16px}
   .proj{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;cursor:zoom-in;
-    box-shadow:0 6px 18px rgba(11,16,32,.05);transition:transform .1s ease,box-shadow .15s ease;display:flex;flex-direction:column}
-  .proj:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(11,16,32,.1)}
-  .proj img{width:100%;height:190px;object-fit:cover;object-position:top;background:var(--soft)}
-  .proj .cap{padding:12px 14px}
-  .proj .val{display:block;color:var(--green);font-weight:800;font-size:19px;letter-spacing:-.01em}
-  .proj .ty{display:block;font-size:13px;color:var(--body);margin-top:2px}
-  .note{text-align:center;color:var(--muted);font-size:14px;margin-top:22px}
+    box-shadow:0 5px 16px rgba(11,16,32,.05);transition:transform .1s,box-shadow .15s;display:flex;flex-direction:column}
+  .proj:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(11,16,32,.1)}
+  .proj img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;background:var(--soft)}
+  .proj .cap{padding:11px 13px}
+  .proj .val{display:block;color:var(--green);font-weight:800;font-size:18px;letter-spacing:-.01em}
+  .proj .ty{display:block;font-size:13px;color:var(--body);margin-top:1px;line-height:1.35}
+  .note{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
 
-  /* cta */
-  .cta{background:var(--soft);border-radius:var(--radius);text-align:center;padding:40px 24px;margin-top:10px}
+  .cta{background:var(--soft);border-radius:var(--radius);text-align:center;padding:40px 24px;margin-top:8px}
   .cta h2{font-size:clamp(22px,3.4vw,30px);margin-bottom:10px}
   .cta p{color:var(--body);margin:0 0 22px}
   .btn{display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-size:17px;
-    padding:16px 34px;border-radius:999px;text-decoration:none;box-shadow:0 10px 24px rgba(21,94,239,.26);transition:transform .08s ease,background .15s}
+    padding:16px 34px;border-radius:999px;text-decoration:none;box-shadow:0 10px 24px rgba(21,94,239,.26);transition:transform .08s,background .15s}
   .btn:hover{background:#0f49c4;transform:translateY(-1px)}
-
   footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}
 
-  /* lightbox */
   .lb{position:fixed;inset:0;background:rgba(6,10,20,.92);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
   .lb.open{display:flex}
   .lb img{max-width:100%;max-height:92vh;border-radius:10px}
   .lb .x{position:absolute;top:14px;right:20px;color:#fff;font-size:36px;cursor:pointer;line-height:1}
 
-  @media(max-width:900px){ .projgrid{grid-template-columns:repeat(3,1fr)} }
   @media(max-width:720px){
-    .vids{grid-template-columns:1fr}
+    section{padding:34px 0}
+    .vids{grid-template-columns:1fr;max-width:420px}
+    .reviews{columns:2 150px}
     .projgrid{grid-template-columns:repeat(2,1fr)}
-    .reviews{columns:2 160px}
-    section{padding:36px 0}
   }
-  @media(max-width:420px){ .reviews{columns:1} }
+  @media(max-width:400px){ .reviews{columns:1} }
 </style>
 </head>
 <body>
@@ -126,6 +119,10 @@
         <video src="/img/opt/proof/john.mp4" poster="/img/opt/proof/john.jpg" controls preload="none" playsinline data-vid="john"></video>
         <div class="meta"><span class="nm">Jon</span><span class="dot">&middot;</span><span class="co">Colorado Elite Outdoor</span></div>
       </div>
+      <div class="vid">
+        <video src="/img/opt/proof/john2.mp4" poster="/img/opt/proof/john2.jpg" controls preload="none" playsinline data-vid="john2"></video>
+        <div class="meta"><span class="nm">Jon</span><span class="dot">&middot;</span><span class="co">"3 estimates a day"</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -145,7 +142,10 @@
 <!-- PROJECTS -->
 <section>
   <div class="wrap">
-    <div class="slabel"><h2>The work this brings in</h2><span class="count" id="projcount"></span></div>
+    <div class="slabel">
+      <h2>The leads this brings in</h2>
+      <div class="sub">Basement finishes, whole-home remodels, kitchens and baths, decks, and outdoor living.</div>
+    </div>
     <div class="projgrid" id="projgrid"></div>
     <p class="note">Real estimate requests from homeowners. Values are the homeowner's project estimate. A sample, not every lead.</p>
   </div>
@@ -169,7 +169,6 @@
 <script>
 (function(){
   var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  /* Meta Pixel */
   var META_PIXEL_ID="1253053683563839";
   if(META_PIXEL_ID && !isLocal){
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -180,7 +179,6 @@
     fbq('init',META_PIXEL_ID); fbq('track','PageView'); fbq('trackCustom','ProofPageView',{});
   }
   function fb(t,n,p){ if(META_PIXEL_ID && !isLocal && window.fbq){ try{fbq(t,n,p||{});}catch(e){} } }
-  /* GA4 */
   var GA_ID="G-CJ2E528Y4H";
   if(GA_ID && !isLocal){
     var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
@@ -189,44 +187,33 @@
   }
   function ga(n,p){ if(GA_ID && !isLocal && window.gtag){ try{gtag('event',n,p||{});}catch(e){} } }
 
-  /* data */
-  var reviews = ['testimonial','text-1','text-2','text-3','text-4','text-5','text-6'];
+  /* reviews (full screenshots) */
+  var reviews = ['/img/opt/testimonial.jpg','/img/opt/text-1.jpg','/img/opt/text-2.jpg',
+    '/img/opt/text-3.jpg','/img/opt/text-4.jpg','/img/opt/text-5.jpg','/img/opt/text-6.jpg',
+    '/img/opt/proof/review-ceoc.jpg'];
+  /* projects: [file rank, value, type] — high to low, odd lead dropped */
   var projects = [
-    ['01','$142,000','Basement finish'],
-    ['02','$130,000','Full home remodel'],
-    ['03','$106,000','Basement finish'],
-    ['04','$77,000','Basement finish'],
-    ['05','$75,000','Basement finish'],
-    ['06','$73,000','Kitchen & basement remodel'],
-    ['07','$70,000','Basement finish'],
-    ['08','$70,000','Basement finish & entrance'],
-    ['09','$70,000','Full home remodel'],
-    ['10','$70,000','Landscape design, 1 acre'],
-    ['12','$65,000','Covered patio & outdoor living'],
-    ['13','$63,000','Basement finish'],
-    ['14','$61,000','Basement finish'],
-    ['15','$55,000','Backyard design, pool & garden'],
-    ['16','$55,000','Yard leveling for pool'],
-    ['17','$55,000','Backyard, pool & sport court'],
-    ['18','$52,000','Backyard landscape'],
-    ['19','$49,000','Basement floor & epoxy'],
-    ['20','$49,000','Basement finish'],
-    ['21','$47,000','Basement finish'],
-    ['22','$46,000','Full yard redo'],
+    ['01','$142,000','Basement finish'],['02','$130,000','Full home remodel'],
+    ['03','$106,000','Basement finish'],['04','$77,000','Basement finish'],
+    ['05','$75,000','Basement finish'],['06','$73,000','Kitchen & basement remodel'],
+    ['07','$70,000','Basement finish'],['08','$70,000','Basement finish & entrance'],
+    ['10','$70,000','Landscape design, 1 acre'],['12','$65,000','Covered patio & outdoor living'],
+    ['13','$63,000','Basement finish'],['14','$61,000','Basement finish'],
+    ['15','$55,000','Backyard design, pool & garden'],['16','$55,000','Yard leveling for pool'],
+    ['17','$55,000','Backyard, pool & sport court'],['18','$52,000','Backyard landscape'],
+    ['19','$49,000','Basement floor & epoxy'],['20','$49,000','Basement finish'],
+    ['21','$47,000','Basement finish'],['22','$46,000','Full yard redo'],
     ['23','$42,000','Windows, siding & deck']
   ];
 
-  /* render reviews */
   var rv=document.getElementById('reviews');
-  reviews.forEach(function(name){
+  reviews.forEach(function(src){
     var fig=document.createElement('figure');
     var img=document.createElement('img');
-    img.src='/img/opt/'+name+'.jpg'; img.alt='Client review'; img.loading='lazy';
-    img.setAttribute('data-full','/img/opt/'+name+'.jpg');
+    img.src=src; img.alt='Client review'; img.loading='lazy'; img.setAttribute('data-full',src);
     fig.appendChild(img); rv.appendChild(fig);
   });
 
-  /* render projects */
   var pg=document.getElementById('projgrid');
   projects.forEach(function(p){
     var full='/img/opt/proof/proj-'+p[0]+'.jpg';
@@ -235,7 +222,6 @@
       '<div class="cap"><span class="val">'+p[1]+'</span><span class="ty">'+p[2]+'</span></div>';
     pg.appendChild(d);
   });
-  document.getElementById('projcount').textContent = projects.length + ' recent requests';
 
   /* lightbox */
   var lb=document.getElementById('lb'), lbimg=document.getElementById('lbimg');
@@ -246,11 +232,9 @@
   });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ lb.classList.remove('open'); lbimg.src=''; } });
 
-  /* video play = proof engagement */
   document.querySelectorAll('video[data-vid]').forEach(function(v){
     v.addEventListener('play', function(){ fb('trackCustom','ProofVideoPlay',{who:v.getAttribute('data-vid')}); ga('proof_video_play',{who:v.getAttribute('data-vid')}); }, {once:true});
   });
-  /* book click */
   document.querySelectorAll('a.js-book').forEach(function(a){
     a.addEventListener('click', function(){ fb('trackCustom','ProofBookClick',{}); ga('proof_book_click',{}); });
   });
