@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Microsoft Clarity (Sales Pages v.2 project) — skips localhost so dev sessions stay out -->
+<script type="text/javascript">
+  if(!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xvbymzl6yf");
+  }
+</script>
+<title>Performance-Based Marketing for Construction Companies</title>
+<meta name="description" content="Performance-based marketing for construction companies doing $1.5M+. If it doesn't bring you real estimate requests, you don't pay.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="If it doesn't bring you estimate requests, you don't pay.">
+<meta property="og:description" content="Performance-based marketing for construction companies doing $1.5M+. You own the site, the leads, and the ad account from day one.">
+<meta property="og:image" content="/img/opt/og-funnel.jpg">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --blue:#155eef; --blue-d:#0f49c4; --ink:#0d1220; --body:#39414f;
+    --line:#e6e9f0; --bg:#ffffff; --soft:#f5f8fd; --green:#16b83f; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--body);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{color:var(--ink);line-height:1.18;margin:0 0 .5em;letter-spacing:-.01em}
+  h1{font-size:clamp(28px,6vw,46px);font-weight:800}
+  h2{font-size:clamp(23px,4.6vw,33px);font-weight:800;margin-top:0}
+  h3{font-size:19px;font-weight:700}
+  p{margin:0 0 1em}
+  b,strong{color:var(--ink)}
+  .sec{padding:54px 0;border-top:1px solid var(--line)}
+  .sec--soft{background:var(--soft)}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin:0 0 14px}
+  .lede{font-size:18px}
+  .green{color:var(--green);font-weight:800}
+
+  /* buttons */
+  .btn{display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-size:17px;
+    padding:16px 30px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;
+    box-shadow:0 8px 22px rgba(21,94,239,.28);transition:transform .08s ease,background .15s ease}
+  .btn:hover{background:var(--blue-d);transform:translateY(-1px)}
+  .btn--lg{font-size:18px;padding:18px 36px}
+  .cta-note{font-size:13px;color:#6b7280;margin-top:12px}
+
+  /* hero */
+  .hero{background:linear-gradient(180deg,#eef3fe 0%,#ffffff 100%);padding:64px 0 48px;text-align:center}
+  .hero h1{max-width:18ch;margin-left:auto;margin-right:auto}
+  .hero .sub{font-size:clamp(18px,3.2vw,22px);color:var(--ink);font-weight:600;max-width:24ch;margin:0 auto 26px}
+  .hero .sub u{text-decoration-color:var(--blue);text-underline-offset:4px}
+  .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:720px;margin:34px auto 0}
+  .strip figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 14px rgba(13,18,32,.06)}
+  .strip img{height:200px;object-fit:cover;object-position:top}
+  .strip figcaption{font-size:12px;color:#6b7280;padding:8px 10px;text-align:left}
+  .trustline{font-size:14px;color:#6b7280;margin-top:22px}
+
+  /* generic cards / rows */
+  .rows{display:grid;gap:14px;margin-top:8px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;background:#fff}
+  .row .hate{color:var(--ink);font-weight:700}
+  .row .fix{color:var(--body)}
+  .row .fix b{color:var(--green)}
+
+  .steps{counter-reset:s;display:grid;gap:16px;margin-top:10px}
+  .step{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:20px 20px 20px 66px;background:#fff}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:18px;top:18px;width:34px;height:34px;
+    background:var(--blue);color:#fff;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .step h3{margin:.1em 0 .3em}
+
+  /* proof wall */
+  .proof{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:10px}
+  .pcard{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;display:flex;flex-direction:column}
+  .pcard img{width:100%;height:230px;object-fit:cover;object-position:top;background:#f0f2f7;cursor:zoom-in}
+  .pcard .cap{padding:12px 14px}
+  .pcard .cap .big{display:block;color:var(--green);font-weight:800;font-size:18px;margin-bottom:2px}
+  .pcard .cap .lab{font-size:14px;color:var(--body)}
+  .proof-total{text-align:center;font-size:15px;color:#6b7280;margin-top:18px}
+
+  /* offer */
+  .pay{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 10px}
+  .plan{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:#fff}
+  .plan--feature{border:2px solid var(--blue);box-shadow:0 10px 30px rgba(21,94,239,.12)}
+  .plan .tag{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--blue)}
+  .plan .price{font-size:30px;font-weight:800;color:var(--ink);margin:6px 0}
+  .plan .price small{font-size:15px;font-weight:600;color:#6b7280}
+  .plan ul{margin:10px 0 0;padding-left:18px}
+  .plan li{margin:6px 0}
+  .guarantee{border:1px solid var(--line);border-left:4px solid var(--green);border-radius:12px;background:#f3fbf5;padding:18px 20px;margin-top:12px}
+  .guarantee b{color:var(--ink)}
+
+  /* own it */
+  .own{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px}
+  .own div{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fff;font-weight:600;color:var(--ink)}
+  .own span{color:var(--green);margin-right:6px;font-weight:800}
+
+  /* who for */
+  .fit{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .fit div{border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;background:#fff}
+  .fit h3{margin-top:0}
+  .fit ul{margin:0;padding-left:18px}
+  .fit li{margin:6px 0}
+
+  /* faq */
+  details{border:1px solid var(--line);border-radius:12px;background:#fff;padding:0 18px;margin:10px 0}
+  details summary{list-style:none;cursor:pointer;font-weight:700;color:var(--ink);padding:16px 0;display:flex;justify-content:space-between;align-items:center}
+  details summary::-webkit-details-marker{display:none}
+  details summary:after{content:"+";color:var(--blue);font-size:22px;font-weight:700;margin-left:12px}
+  details[open] summary:after{content:"\2013"}
+  details .a{padding:0 0 16px;color:var(--body)}
+
+  /* who you'll talk to */
+  .host{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center;border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:#fff}
+  .host img{width:120px;height:120px;border-radius:50%;object-fit:cover}
+
+  /* final */
+  .final{background:linear-gradient(180deg,#0f49c4 0%,#155eef 100%);color:#eaf0ff;text-align:center}
+  .final h2{color:#fff}
+  .final p{color:#d6e2ff}
+  .final .btn{background:#fff;color:var(--blue);box-shadow:0 10px 30px rgba(0,0,0,.2)}
+  .final .btn:hover{background:#f0f4ff}
+
+  /* sticky mobile cta */
+  .sticky{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);
+    padding:10px 16px;display:none;z-index:40;box-shadow:0 -6px 18px rgba(13,18,32,.08)}
+  .sticky .btn{display:block;text-align:center;width:100%}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(5,10,20,.9);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
+  .lb.open{display:flex}
+  .lb img{max-width:100%;max-height:90vh;border-radius:10px}
+  .lb .x{position:absolute;top:16px;right:20px;color:#fff;font-size:34px;cursor:pointer;line-height:1}
+
+  @media(max-width:640px){
+    .row,.proof,.pay,.own,.fit{grid-template-columns:1fr}
+    .strip{grid-template-columns:1fr;max-width:360px}
+    .strip img{height:auto}
+    .host{grid-template-columns:1fr;text-align:center}
+    .host img{margin:0 auto}
+    .sticky{display:block}
+    body{padding-bottom:76px}
+    .sec{padding:42px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Quantum Qube &middot; Built for construction companies</p>
+    <h1>Performance-based marketing for construction companies doing $1.5M+</h1>
+    <p class="sub">If your new site doesn't bring you <u>real estimate requests</u>, you don't pay.</p>
+    <a class="btn btn--lg" href="/book">Book a call</a>
+    <p class="trustline">A short call to see if it's a fit. Construction companies only.</p>
+
+    <div class="strip">
+      <figure><img src="/img/opt/lead-1.jpg" alt="Real estimate request from a homeowner"><figcaption>$142k basement request</figcaption></figure>
+      <figure><img src="/img/opt/lead-2.jpg" alt="Real estimate request from a homeowner"><figcaption>$130k remodel request</figcaption></figure>
+      <figure><img src="/img/opt/testimonial.jpg" alt="Client text message"><figcaption>"Three leads in an hour"</figcaption></figure>
+    </div>
+  </div>
+</header>
+
+<!-- THE PAIN -->
+<section class="sec">
+  <div class="wrap">
+    <h2>Your work looks like a $2M company. Your website looks like a $200K one.</h2>
+    <p class="lede">So homeowners shop you on price. They call the guy whose site looks bigger, even when your work is better. And referrals stay the only pipeline you can count on, which means growth stops the week they slow down.</p>
+    <p>You already do the work of a real company. The problem is the people deciding who to call can't see it yet.</p>
+  </div>
+</section>
+
+<!-- WHY OWNERS STOPPED HIRING AGENCIES -->
+<section class="sec sec--soft">
+  <div class="wrap">
+    <h2>Why owners like you stopped hiring agencies</h2>
+    <p class="lede">We asked 18 contractors what they hate about marketing companies. Here is what came up the most, and how we do it differently.</p>
+    <div class="rows">
+      <div class="row"><div class="hate">Paying every month whether it works or not.</div><div class="fix"><b>If it doesn't bring estimate requests, you don't pay.</b> The risk sits on us, not you.</div></div>
+      <div class="row"><div class="hate">Burned by an agency before.</div><div class="fix">You see the site before it goes live, and the first payment is small.</div></div>
+      <div class="row"><div class="hate">Junk, shared, tire-kicker leads.</div><div class="fix">Every estimate request is yours alone, never shared, texted straight to your phone.</div></div>
+      <div class="row"><div class="hate">Locked into a long contract.</div><div class="fix">The site is a one-time project. There is no contract to get out of.</div></div>
+      <div class="row"><div class="hate">The agency owns your website and logins.</div><div class="fix">The domain, the site and every lead are in your name from day one.</div></div>
+      <div class="row"><div class="hate">Some out-of-state agency that doesn't know your trade.</div><div class="fix">We are in Utah and we only build for construction companies.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec">
+  <div class="wrap">
+    <h2>How it works, in three steps</h2>
+    <div class="steps">
+      <div class="step"><h3>A short call to see if it's a fit</h3><p>We look at your work, your market and your current site. If we're not a fit, we'll tell you on the call.</p></div>
+      <div class="step"><h3>We build your new site from your own project photos</h3><p>It looks like the size of company you actually are. Live in about a week. No filming, no writing, no homework on your end.</p></div>
+      <div class="step"><h3>If it doesn't bring estimate requests, you don't pay</h3><p>Real homeowners asking you for a quote. If the site doesn't bring them, you get every dollar back.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF WALL -->
+<section class="sec sec--soft">
+  <div class="wrap">
+    <h2>Proof, not promises</h2>
+    <p class="lede">Real estimate requests and real client texts. Tap any one to read it.</p>
+    <div class="proof">
+      <div class="pcard"><img src="/img/opt/lead-1.jpg" alt="Basement estimate request" data-full="/img/opt/lead-1.jpg"><div class="cap"><span class="big">$142,000</span><span class="lab">Basement finish request, written out by the homeowner.</span></div></div>
+      <div class="pcard"><img src="/img/opt/lead-2.jpg" alt="Remodel estimate request" data-full="/img/opt/lead-2.jpg"><div class="cap"><span class="big">$130,000</span><span class="lab">New-home full remodel request.</span></div></div>
+      <div class="pcard"><img src="/img/opt/testimonial.jpg" alt="Client text about three leads in an hour" data-full="/img/opt/testimonial.jpg"><div class="cap"><span class="big">"Three leads in an hour"</span><span class="lab">"You're my million dollar man." One of our builders, over text.</span></div></div>
+      <div class="pcard"><img src="/img/opt/lead-12.jpg" alt="Covered patio estimate request" data-full="/img/opt/lead-12.jpg"><div class="cap"><span class="big">$65,000</span><span class="lab">Covered patio and outdoor living request.</span></div></div>
+    </div>
+    <p class="proof-total">Over <b class="green">$1.5 million</b> in estimate requests across the leads we've saved for construction clients. These are a sample, not every lead.</p>
+  </div>
+</section>
+
+<!-- OFFER + GUARANTEE -->
+<section class="sec">
+  <div class="wrap">
+    <h2>The offer, with the price shown</h2>
+    <p class="lede">A premium website built from your own project photos, built to turn visitors into estimate requests. Two ways to pay, never more.</p>
+    <div class="pay">
+      <div class="plan">
+        <div class="tag">Pay in full</div>
+        <div class="price">$1,697</div>
+        <ul>
+          <li>Paid today</li>
+          <li>Nothing later</li>
+          <li>Full refund if it doesn't work</li>
+        </ul>
+      </div>
+      <div class="plan plan--feature">
+        <div class="tag">Split (most pick this)</div>
+        <div class="price">$997 <small>today</small></div>
+        <ul>
+          <li><b>$1,099 only</b> once the site brings real estimate requests</li>
+          <li>Pay the rest after it works, not before</li>
+          <li>If it doesn't work, the $997 is refunded and the $1,099 is never charged</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guarantee">
+      <b>The guarantee:</b> if your new site doesn't bring you 3 real estimate requests within 60 days of going live, you get every dollar back. A real estimate request is a homeowner in your service area asking you for a quote.
+    </div>
+  </div>
+</section>
+
+<!-- YOU OWN EVERYTHING -->
+<section class="sec sec--soft">
+  <div class="wrap">
+    <h2>You own everything</h2>
+    <p class="lede">From day one, in your name. Leave anytime and take it all.</p>
+    <div class="own">
+      <div><span>&#10003;</span> Your domain</div>
+      <div><span>&#10003;</span> Your website</div>
+      <div><span>&#10003;</span> Every lead it brings in</div>
+      <div><span>&#10003;</span> Your ad account, if you add ads later</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="sec">
+  <div class="wrap">
+    <h2>Who this is for, and who it isn't</h2>
+    <div class="fit">
+      <div>
+        <h3>This is for you if</h3>
+        <ul>
+          <li>You run a construction company doing $1.5M or more</li>
+          <li>You have crews and a PM or office manager</li>
+          <li>Your work is good and the market just can't see it yet</li>
+        </ul>
+      </div>
+      <div>
+        <h3>This is not for you if</h3>
+        <ul>
+          <li>You're an owner-operator who just needs more work this week</li>
+          <li>You want a cheap site and nothing behind it</li>
+          <li>You're not ready to take on bigger jobs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec sec--soft">
+  <div class="wrap">
+    <h2>Straight answers</h2>
+    <details><summary>What if it doesn't work?</summary><div class="a">You don't pay. On the split, the $997 is refunded and the $1,099 is never charged. The risk is on us.</div></details>
+    <details><summary>What if I get more work than I can handle?</summary><div class="a">That's the point, and it's a good problem. You decide how fast to grow, and we can slow things down when your crews are full.</div></details>
+    <details><summary>Do I have to be on camera?</summary><div class="a">No. We build the site from your own project photos. No filming, no writing, no homework.</div></details>
+    <details><summary>Who do I actually talk to?</summary><div class="a">Jonathan, here in Utah. A real person who answers his own phone, not a call center.</div></details>
+    <details><summary>How long until I see something?</summary><div class="a">The site is live in about a week. The first requests come from traffic you already have, so there's no long ramp-up.</div></details>
+    <details><summary>What happens to the site if I leave?</summary><div class="a">It's yours. The domain, the site and the leads are in your name from day one. Leave anytime and take it all.</div></details>
+  </div>
+</section>
+
+<!-- WHO YOU'LL TALK TO -->
+<section class="sec">
+  <div class="wrap">
+    <h2>Who you'll talk to</h2>
+    <div class="host">
+      <img src="/img/opt/vid-intro.jpg" alt="Jonathan Lindsay">
+      <div>
+        <p style="margin:0 0 .4em"><b>Jonathan Lindsay</b></p>
+        <p style="margin:0">I'm in Utah and I only work with construction companies. On the call we'll look at your site and your market, and even if you don't buy, you'll walk away with the three things I'd change on your current site to bring in more estimate requests.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="sec final">
+  <div class="wrap">
+    <h2>See if it's a fit</h2>
+    <p class="lede">A short call. You'll leave with three things to fix on your current site, whether or not we work together.</p>
+    <a class="btn btn--lg" href="/book">Book a call</a>
+    <p class="cta-note" style="color:#c7d6ff">Construction companies doing $1.5M+. If it doesn't work, you don't pay.</p>
+  </div>
+</section>
+
+<!-- sticky mobile cta -->
+<div class="sticky"><a class="btn" href="/book">Book a call</a></div>
+
+<!-- lightbox -->
+<div class="lb" id="lb"><span class="x" id="lbx">&times;</span><img id="lbimg" src="" alt=""></div>
+
+<script>
+(function(){
+  var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+
+  /* ---------- Meta Pixel ---------- */
+  var META_PIXEL_ID = "1253053683563839";
+  if (META_PIXEL_ID && !isLocal){
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL_ID); fbq('track','PageView'); fbq('trackCustom','OfferPageView',{});
+  }
+  function fb(type,name,params){ if(META_PIXEL_ID && !isLocal && window.fbq){ try{ fbq(type,name,params||{}); }catch(e){} } }
+
+  /* ---------- GA4 ---------- */
+  var GA_ID = "G-CJ2E528Y4H";
+  if (GA_ID && !isLocal){
+    var gs=document.createElement('script'); gs.async=true;
+    gs.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(gs);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date()); gtag('config', GA_ID);
+  }
+  function ga(name,params){ if(GA_ID && !isLocal && window.gtag){ try{ gtag('event',name,params||{}); }catch(e){} } }
+
+  /* book button clicks = intent signal */
+  document.querySelectorAll('a[href="/book"]').forEach(function(a){
+    a.addEventListener('click', function(){ fb('trackCustom','OfferBookClick',{}); ga('offer_book_click',{}); });
+  });
+
+  /* ---------- lightbox ---------- */
+  var lb=document.getElementById('lb'), lbimg=document.getElementById('lbimg');
+  document.querySelectorAll('.pcard img[data-full]').forEach(function(img){
+    img.addEventListener('click', function(){ lbimg.src=img.getAttribute('data-full'); lb.classList.add('open'); });
+  });
+  function closeLb(){ lb.classList.remove('open'); lbimg.src=''; }
+  document.getElementById('lbx').addEventListener('click', closeLb);
+  lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
+})();
+</script>
+</body>
+</html>
