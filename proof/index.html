@@ -166,6 +166,7 @@
 
 <div class="lb" id="lb"><span class="x" id="lbx">&times;</span><img id="lbimg" src="" alt=""></div>
 
+<script src="projects.js"></script>
 <script>
 (function(){
   var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
@@ -190,25 +191,7 @@
   /* reviews (full screenshots) */
   var reviews = ['/img/opt/testimonial.jpg','/img/opt/text-1.jpg','/img/opt/text-2.jpg',
     '/img/opt/text-3.jpg','/img/opt/text-4.jpg','/img/opt/text-5.jpg','/img/opt/text-6.jpg'];
-  /* projects: [file stub, value, type] — high to low; names/phones blurred, addresses redacted */
-  var projects = [
-    ['pj-01','$142,000','Basement finish'],['pj-02','$128,000','Basement finish'],
-    ['pj-03','$106,000','Basement finish'],['pj-04','$106,000','Basement finish'],
-    ['pj-05','$104,000','Basement finish'],['pj-06','$104,000','Basement finish'],
-    ['pj-07','$100,000','Backyard & pool'],['pj-08','$100,000','Landscaping'],
-    ['pj-09','$100,000','Retaining walls & yard'],['pj-10','$94,000','Basement finish'],
-    ['pj-11','$82,000','Basement finish'],['pj-12','$80,000','Basement finish'],
-    ['pj-13','$74,000','Basement finish'],['pj-14','$70,000','Landscaping'],
-    ['pj-15','$67,000','Basement finish'],['pj-16','$65,000','Patio & pergola'],
-    ['pj-17','$65,000','Patio & outdoor living'],['pj-18','$64,000','Basement finish'],
-    ['pj-19','$60,000','Basement finish'],['pj-20','$60,000','Retaining walls & yard'],
-    ['pj-21','$60,000','New deck'],['pj-22','$55,000','Backyard & pool'],
-    ['pj-23','$52,000','Landscaping'],['pj-24','$52,000','Basement finish'],
-    ['pj-25','$50,000','Basement finish'],['pj-26','$42,000','Basement finish'],
-    ['pj-27','$42,000','Landscaping'],['pj-28','$42,000','New deck'],
-    ['pj-29','$42,000','Outdoor project'],['pj-30','$30,000','New deck'],
-    ['pj-31','$30,000','Deck & patio'],['pj-32','$26,000','Patio & pergola']
-  ];
+  /* projects = global array from projects.js (all clean leads, every company, high to low) */
 
   var rv=document.getElementById('reviews');
   reviews.forEach(function(src){
