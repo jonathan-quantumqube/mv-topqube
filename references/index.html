@@ -100,6 +100,38 @@
   .lb img{max-width:100%;max-height:92vh;border-radius:10px}
   .lb .x{position:absolute;top:14px;right:20px;color:#fff;font-size:36px;cursor:pointer;line-height:1}
 
+  /* jump buttons (same as the results page) */
+  .t-click{display:none}
+  @media(hover:hover) and (pointer:fine){ .t-tap{display:none} .t-click{display:inline} }
+  .jump-hint{margin:18px 0 0;font-size:14px;font-weight:600;color:var(--muted)}
+  .jump{display:grid;grid-template-columns:repeat(3,190px);justify-content:center;gap:10px;margin:10px auto 0}
+  .jump a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+    background:var(--blue);color:#fff;border-radius:12px;padding:12px 10px;text-decoration:none;line-height:1.2;
+    box-shadow:0 6px 16px rgba(21,94,239,.24);transition:transform .1s,background .15s}
+  .jump a:hover{background:var(--blue-d);transform:translateY(-1px)}
+  .jump a b{font-size:16px;font-weight:800}
+  .jump a small{font-size:12.5px;font-weight:600;opacity:.85}
+  section{scroll-margin-top:12px}
+
+  .more-sec{padding:36px 0}
+  .more-sec.alt{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .more-sec h2{font-size:clamp(20px,2.6vw,26px);font-weight:800;margin:0 0 18px}
+  .wide{max-width:1080px}
+  .reviews{columns:4 210px;column-gap:12px;text-align:left}
+  .reviews figure{break-inside:avoid;margin:0 0 12px;background:#fff;transition:transform .1s,box-shadow .15s}
+  .reviews figure:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(11,16,32,.1)}
+  .reviews img{width:100%}
+  .reviews figcaption{text-align:center}
+  .projgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;text-align:left}
+  .proj{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;cursor:zoom-in;
+    box-shadow:0 5px 16px rgba(11,16,32,.05);transition:transform .1s,box-shadow .15s;display:flex;flex-direction:column}
+  .proj:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(11,16,32,.1)}
+  .proj img{width:100%;aspect-ratio:3/4;object-fit:contain;object-position:center;background:#000}
+  .proj .cap{padding:11px 13px}
+  .proj .val{display:block;color:var(--green);font-weight:800;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+  .proj .ty{display:block;font-size:13px;color:var(--body);margin-top:1px;line-height:1.35}
+  .note{color:var(--muted);font-size:13px;margin-top:18px}
+
   .cta{padding:36px 0 8px}
   .cta h2{font-size:clamp(21px,2.8vw,26px);font-weight:800}
   .cta p{margin:6px 0 16px;font-size:15px;text-wrap:balance}
@@ -120,6 +152,12 @@
 
   @media(max-width:620px){
     .wrap{padding:0 16px}
+    .jump{grid-template-columns:repeat(3,1fr);gap:8px}
+    .jump a{padding:11px 4px}
+    .jump a b{font-size:15px}
+    .jump a small{font-size:11.5px}
+    .reviews{columns:2 150px}
+    .projgrid{grid-template-columns:repeat(2,1fr)}
     .act{flex:1 1 100%}
     .media.v4{gap:6px}
     .vid .play{width:34px;height:34px}
@@ -140,11 +178,17 @@
     <h1>Talk to our clients</h1>
     <p>Have questions about working with us? Call the owners we work with and ask them.</p>
     <p class="small">They run busy companies, so please call during business hours.</p>
+    <p class="jump-hint"><span class="t-tap">Tap</span><span class="t-click">Click</span> to jump to each section &darr;</p>
+    <div class="jump">
+      <a href="#refs"><b>&#128222; Call</b><small>our clients</small></a>
+      <a href="#texts"><b>&#128172; Texts</b><small>from our clients</small></a>
+      <a href="#leads"><b>&#128200; Quotes</b><small>for our clients</small></a>
+    </div>
   </div>
 </div>
 
   <!-- Colorado Elite -->
-<section class="ref alt" data-co="ceoc"><div class="wrap">
+<section class="ref alt" id="refs" data-co="ceoc"><div class="wrap">
     <h2>Colorado Elite Outdoor Contractors</h2>
     <p class="who">John, owner &middot; Colorado</p>
     <div class="acts">
@@ -189,6 +233,23 @@
     </div>
 </div></section>
 
+<!-- ALL CLIENT TEXTS -->
+<section class="more-sec" id="texts">
+  <div class="wrap wide">
+    <h2>Texts from our clients</h2>
+    <div class="reviews" id="reviews"></div>
+  </div>
+</section>
+
+<!-- ALL QUOTES -->
+<section class="more-sec alt" id="leads">
+  <div class="wrap wide">
+    <h2>Quotes we've gotten for our clients</h2>
+    <div class="projgrid" id="projgrid"></div>
+    <p class="note">Dollar ranges are conservative estimates of each project's size, not signed contracts.</p>
+  </div>
+</section>
+
 <div class="wrap">
   <section class="cta">
     <h2>Want results like theirs?</h2>
@@ -202,12 +263,14 @@
 
 <footer><div class="wrap">
   <p class="disc">These are past results for our clients, not a promise or guarantee. Your results will depend on your market, your offer, and how you follow up with leads.</p>
+  <p class="disc">Dollar ranges on the quote requests are conservative estimates of each project's size, based on the scope each homeowner described and typical local pricing (or the budget they gave us). They are not signed contracts or revenue. Homeowner names and contact info are removed for privacy.</p>
   &copy; Quantum Qube
 </div></footer>
 
 <div class="vlb" id="vlb"><button class="x" id="vlbx" aria-label="Close">&times;</button><video id="vlbv" controls playsinline></video></div>
 <div class="lb" id="lb"><span class="x" id="lbx">&times;</span><img id="lbimg" src="" alt=""></div>
 
+<script src="/proof/projects.js"></script>
 <script>
 (function(){
   var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
@@ -228,6 +291,27 @@
     window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',GA_ID);
   }
   function ga(n,p){ if(GA_ID && !isLocal && window.gtag){ try{gtag('event',n,p||{});}catch(e){} } }
+
+  // every client text (same list as the results page)
+  var RECREATED = 'Recreated from a phone call. Their exact words, but not a real text thread.';
+  var reviews = [['/img/opt/testimonial.jpg'],['/img/opt/text-1.jpg'],['/img/opt/text-2.jpg',RECREATED],
+    ['/img/opt/text-3.jpg',RECREATED],['/img/opt/text-4.jpg'],['/img/opt/text-5.jpg'],['/img/opt/text-6.jpg']];
+  var rv=document.getElementById('reviews');
+  reviews.forEach(function(r){
+    var fig=document.createElement('figure'), img=document.createElement('img');
+    img.src=r[0]; img.alt='Client text'; img.loading='lazy'; img.setAttribute('data-full',r[0]);
+    fig.appendChild(img);
+    if(r[1]){ var c=document.createElement('figcaption'); c.textContent=r[1]; fig.appendChild(c); }
+    rv.appendChild(fig);
+  });
+  // every quote request (shared list: /proof/projects.js)
+  var pg=document.getElementById('projgrid');
+  (window.projects||[]).forEach(function(p){
+    var full='/img/opt/proof/'+p[0]+'.jpg', d=document.createElement('div'); d.className='proj';
+    d.innerHTML='<img src="'+full+'" alt="Estimate request" loading="lazy" data-full="'+full+'">'+
+      '<div class="cap"><span class="val">'+p[1]+'</span><span class="ty">'+p[2]+'</span></div>';
+    pg.appendChild(d);
+  });
 
   // image lightbox
   var lb=document.getElementById('lb'), lbimg=document.getElementById('lbimg');
