@@ -1,7 +1,10 @@
 # mv.topqube.com root serves the proof page (single source: /proof/).
-# "Apply to work with us" -> /book/ (revenue check, then the GHL calendar).
+# "Apply to work with us" -> /calendar (= /book/) (revenue check, then the GHL calendar).
 # The old application funnel still lives at /funnel/. /confirm is kept as-is.
 /    /proof/    200!
+
+# Calendar link (Apply step, then the GHL calendar). Same page as /book/.
+/calendar    /book/    200
 
 # Instagram bio link -> proof page (tagged for GA)
 /ig    /proof/?utm_source=instagram&utm_medium=social&utm_campaign=bio    302
