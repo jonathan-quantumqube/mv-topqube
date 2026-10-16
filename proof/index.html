@@ -192,11 +192,11 @@
   <div class="wrap">
     <h2>Want results like these?</h2>
     <p class="fitline">For construction companies doing over $750,000 a year.</p>
-    <a class="btn js-book" href="/calendar">Apply to work with us</a>
+    <a class="btn js-book" href="/apply">Apply to work with us</a>
   </div>
 </section>
 
-<a class="float btn-float js-book" id="floatBook" href="/calendar">Apply to work with us &rarr;</a>
+<a class="float btn-float js-book" id="floatBook" href="/apply">Apply to work with us &rarr;</a>
 
 <footer><div class="wrap">
   <p class="disc">These are past results for our clients, not a promise or guarantee. Your results will depend on your market, your offer, and how you follow up with leads.</p>
@@ -281,7 +281,7 @@
     new IntersectionObserver(function(es){ fl.classList.toggle('hide', es[0].isIntersecting); }).observe(cta);
   }
   document.querySelectorAll('a.js-book').forEach(function(a){
-    if(location.search) a.href = '/calendar' + location.search;   // carry UTMs through to the calendar
+    if(location.search) a.href = '/apply' + location.search;   // carry UTMs through to the calendar
     a.addEventListener('click', function(){ fb('trackCustom','ProofBookClick',{}); ga('proof_book_click',{}); });
   });
 })();

@@ -19,9 +19,20 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- share preview (texts, Messenger, socials) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantum Qube">
+<meta property="og:url" content="https://mv.topqube.com/apply">
 <meta property="og:title" content="Apply to work with Quantum Qube">
 <meta property="og:description" content="For construction companies doing over $750,000 a year.">
-<meta property="og:image" content="https://mv.topqube.com/img/opt/og-proof.jpg">
+<meta property="og:image" content="https://mv.topqube.com/img/opt/og-calendar.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Book a call with Jonathan. For construction companies doing over $750,000 a year.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apply to work with Quantum Qube">
+<meta name="twitter:description" content="For construction companies doing over $750,000 a year.">
+<meta name="twitter:image" content="https://mv.topqube.com/img/opt/og-calendar.jpg">
 <style>
   :root{ --blue:#155eef; --blue-d:#0f49c4; --blue-soft:#eef4ff; --ink:#0b1020; --body:#49535f; --muted:#94a0b0; --line:#e3e8f0; --soft:#f6f8fc; }
   *{box-sizing:border-box}
@@ -40,16 +51,25 @@
   h1{color:var(--ink);font-size:clamp(26px,4.4vw,38px);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin:0;text-wrap:balance}
   .sub{margin:8px 0 0;font-size:17px;text-wrap:balance}
   .sub b{color:var(--ink)}
-  .fit{list-style:none;padding:16px 18px;margin:20px 0 0;background:#fff;border:1px solid var(--line);border-radius:14px;text-align:left}
-  .fit li{position:relative;padding:5px 0 5px 30px;color:var(--ink);font-weight:600}
-  .fit li:before{content:"\2713";position:absolute;left:4px;top:5px;color:#16c047;font-weight:800}
-  .q{margin:24px 0 10px;color:var(--ink);font-weight:800;font-size:18px}
-  .opt{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 10px;
-    border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:13px;padding:15px 18px;
-    font-family:inherit;font-weight:600;font-size:16px;line-height:1.3;cursor:pointer;text-align:left;transition:border-color .15s,background .15s}
-  .opt:hover{border-color:var(--blue);background:var(--blue-soft)}
-  .opt:active{transform:scale(.99)}
-  .opt .arw{color:var(--blue)}
+  .lbl{margin:22px 0 10px;color:var(--ink);font-weight:800;font-size:18px}
+  .chk{display:flex;align-items:center;gap:14px;margin:0 0 10px;padding:15px 18px;background:#fff;
+    border:1.5px solid var(--line);border-radius:13px;color:var(--ink);font-weight:600;line-height:1.35;
+    text-align:left;cursor:pointer;transition:border-color .15s,background .15s;-webkit-tap-highlight-color:transparent}
+  .chk:hover{border-color:var(--blue)}
+  .chk input{position:absolute;opacity:0;pointer-events:none}
+  .chk .box{flex:none;width:26px;height:26px;border:2px solid #c4cdda;border-radius:7px;background:#fff;
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:800;transition:all .15s}
+  .chk.on{border-color:var(--blue);background:var(--blue-soft)}
+  .chk.on .box{background:var(--blue);border-color:var(--blue)}
+  .chk.on .box:after{content:"\2713"}
+  .chk input:focus-visible + .box{outline:3px solid rgba(21,94,239,.35);outline-offset:2px}
+  .go{width:100%;margin:8px 0 0;padding:17px 20px;border:0;border-radius:99px;background:var(--blue);color:#fff;
+    font-family:inherit;font-weight:700;font-size:18px;cursor:pointer;box-shadow:0 14px 30px -14px rgba(21,94,239,.7);transition:background .15s,opacity .15s}
+  .go:hover{background:var(--blue-d)}
+  .go:disabled{background:#c4cdda;box-shadow:none;cursor:not-allowed}
+  .hint{margin:10px 0 0;font-size:14px;color:var(--muted)}
+  .nope{display:inline-block;margin:14px 0 0;background:none;border:0;color:var(--body);font-family:inherit;font-size:15px;
+    text-decoration:underline;cursor:pointer;padding:6px}
   .back{background:none;border:0;color:var(--muted);font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;margin:8px 0 0;padding:6px}
   .back:hover{color:var(--blue)}
   .card{margin:20px auto 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;
@@ -77,16 +97,13 @@
       <span class="pill">Step 1 of 2</span>
       <h1>Apply to work with Quantum Qube</h1>
       <p class="sub">We only work with construction companies doing <b>over $750,000 a year</b>.</p>
-      <ul class="fit">
-        <li>You own or run a construction company</li>
-        <li>It does over $750,000 a year</li>
-        <li>You want more big jobs and you're ready to spend on ads to get them</li>
-      </ul>
-      <p class="q">How much does your company do per year?</p>
-      <button class="opt" data-rev="under">Under $750,000 <span class="arw">&rarr;</span></button>
-      <button class="opt" data-rev="750-1.5">$750,000 to $1.5 million <span class="arw">&rarr;</span></button>
-      <button class="opt" data-rev="1.5-5">$1.5 million to $5 million <span class="arw">&rarr;</span></button>
-      <button class="opt" data-rev="5+">Over $5 million <span class="arw">&rarr;</span></button>
+      <p class="lbl">Check each box to continue</p>
+      <label class="chk"><input type="checkbox" data-c="owner"><span class="box"></span>I own or run a construction company</label>
+      <label class="chk"><input type="checkbox" data-c="revenue"><span class="box"></span>My company does over $750,000 a year</label>
+      <label class="chk"><input type="checkbox" data-c="ads"><span class="box"></span>I'm ready to spend money on ads to get more big jobs</label>
+      <button class="go" id="go" disabled>Continue to the calendar &rarr;</button>
+      <p class="hint" id="hint">Check all 3 boxes to see open times.</p>
+      <button class="nope" id="nope">We're not there yet</button>
     </div>
   </section>
 
@@ -107,7 +124,7 @@
       <h1>Thanks for being honest</h1>
       <p class="sub">Right now we only take on construction companies doing over $750,000 a year. When you get there, come back and apply.</p>
       <a class="proof" href="/">See the results we've gotten for our clients &rarr;</a><br>
-      <button class="back" data-back>&larr; I picked the wrong one</button>
+      <button class="back" data-back>&larr; Go back</button>
     </div>
   </section>
 
@@ -130,7 +147,7 @@
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init',META_PIXEL_ID); fbq('track','PageView'); fbq('trackCustom','BookPageView',{});
+    fbq('init',META_PIXEL_ID); fbq('track','PageView'); fbq('trackCustom','ApplyPageView',{});
   }
   function fb(t,n,p){ if(META_PIXEL_ID && !isLocal && window.fbq){ try{fbq(t,n,p||{});}catch(e){} } }
   var GA_ID = "G-CJ2E528Y4H";
@@ -138,7 +155,7 @@
     var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
     document.head.appendChild(gs);window.dataLayer=window.dataLayer||[];
     window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',GA_ID);
-    gtag('event','book_page_view',{});
+    gtag('event','apply_page_view',{});
   }
   function ga(n,p){ if(GA_ID && !isLocal && window.gtag){ try{gtag('event',n,p||{});}catch(e){} } }
 
@@ -151,15 +168,24 @@
 
   // Pass through prefill params (?first_name=&last_name=&email=&phone=) + UTMs to the calendar
   var q = location.search || '', loaded = false;
-  document.querySelectorAll('[data-rev]').forEach(function(b){
-    b.addEventListener('click', function(){
-      var rev = b.getAttribute('data-rev');
-      ga('book_gate', {revenue: rev, qualified: rev!=='under'});
-      if(rev==='under'){ fb('trackCustom','BookGateDeclined',{revenue:rev}); show('s-no'); return; }
-      fb('trackCustom','BookGateQualified',{revenue:rev});
-      if(!loaded){ document.getElementById('calFrame').src='https://api.leadconnectorhq.com/widget/booking/'+CALENDAR_ID+q; loaded=true; }
-      show('s-cal');
-    });
+  var boxes = [].slice.call(document.querySelectorAll('.chk input')), go = document.getElementById('go'), hint = document.getElementById('hint');
+  function sync(){
+    var n = 0;
+    boxes.forEach(function(b){ b.parentNode.classList.toggle('on', b.checked); if(b.checked) n++; });
+    go.disabled = n < boxes.length;
+    hint.textContent = n < boxes.length ? 'Check all 3 boxes to see open times.' : 'Next: pick a time for your call.';
+  }
+  boxes.forEach(function(b){ b.addEventListener('change', sync); });
+  sync();
+  go.addEventListener('click', function(){
+    if(go.disabled) return;
+    ga('book_gate', {qualified: true}); fb('trackCustom','BookGateQualified',{});
+    if(!loaded){ document.getElementById('calFrame').src='https://api.leadconnectorhq.com/widget/booking/'+CALENDAR_ID+q; loaded=true; }
+    show('s-cal');
+  });
+  document.getElementById('nope').addEventListener('click', function(){
+    ga('book_gate', {qualified: false}); fb('trackCustom','BookGateDeclined',{});
+    show('s-no');
   });
   document.querySelectorAll('[data-back]').forEach(function(b){
     b.addEventListener('click', function(){ show('s-fit'); });
