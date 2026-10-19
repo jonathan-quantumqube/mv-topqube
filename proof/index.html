@@ -233,10 +233,12 @@
   }
   function ga(n,p){ if(GA_ID && !isLocal && window.gtag){ try{gtag('event',n,p||{});}catch(e){} } }
 
-  // text-2 (2:38 PM) + text-3 (9:14 AM) are recreated from phone calls
+  // text-2 (2:38 PM) + text-3 (9:14 AM) are recreated from phone calls; senders named where we know them
   var RECREATED = 'Recreated from a phone call. Their exact words, but not a real text thread.';
-  var reviews = [['/img/opt/testimonial.jpg'],['/img/opt/text-1.jpg'],['/img/opt/text-2.jpg',RECREATED],
-    ['/img/opt/text-3.jpg',RECREATED],['/img/opt/text-4.jpg'],['/img/opt/text-5.jpg'],['/img/opt/text-6.jpg']];
+  var reviews = [['/img/opt/text-john-ceoc.jpg','John, Colorado Elite Outdoor Contractors'],
+    ['/img/opt/text-2.jpg','John, Colorado Elite Outdoor Contractors. '+RECREATED],
+    ['/img/opt/text-3.jpg','Dakota, Lynnwood Construction. '+RECREATED],
+    ['/img/opt/text-4.jpg'],['/img/opt/text-5.jpg'],['/img/opt/text-6.jpg']];
 
   var rv=document.getElementById('reviews');
   reviews.forEach(function(r){

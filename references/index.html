@@ -72,8 +72,9 @@
   .media{display:grid;gap:10px;margin:20px auto 0}
   .media.v4{grid-template-columns:repeat(4,1fr)}
   .media.pair{grid-template-columns:repeat(2,1fr);max-width:440px;align-items:start}
-  .media.one{grid-template-columns:1fr;max-width:260px}
+  .media.one{grid-template-columns:1fr;max-width:220px}
   .media.texts{grid-template-columns:1fr;max-width:260px;margin-top:12px}
+  .media.texts2{max-width:520px;margin-top:12px}
 
   .vid{position:relative;display:block;width:100%;padding:0;border:0;cursor:pointer;background:#0b1020;
     border-radius:12px;overflow:hidden;aspect-ratio:9/16;box-shadow:0 8px 22px rgba(11,16,32,.16);font:inherit}
@@ -201,7 +202,8 @@
       <button class="vid" data-vid="john2" data-src="/img/opt/proof/john2.mp4"><img src="/img/opt/proof/john2.jpg" alt="John from Colorado Elite, update"><span class="play"></span><span class="nm">Update<small>0:46</small></span></button>
       <button class="vid" data-vid="john3" data-src="/img/opt/proof/john3.mp4"><img src="/img/opt/proof/john3.jpg" alt="John from Colorado Elite, recommendation"><span class="play"></span><span class="nm">Shout-out<small>0:17</small></span></button>
     </div>
-    <div class="media texts">
+    <div class="media pair texts2">
+      <figure><img src="/img/opt/text-john-ceoc.jpg" alt="Text from John at Colorado Elite" data-full="/img/opt/text-john-ceoc.jpg" loading="lazy"></figure>
       <figure><img src="/img/opt/text-2.jpg" alt="Text from John at Colorado Elite" data-full="/img/opt/text-2.jpg" loading="lazy"><figcaption>Recreated from a phone call. Their exact words, but not a real text thread.</figcaption></figure>
     </div>
 </div></section>
@@ -214,9 +216,8 @@
       <a class="act call" href="tel:+13852132539">&#128222; (385) 213-2539</a>
       <a class="act ig" href="https://www.instagram.com/jh_landscaping_inc/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@jh_landscaping_inc</a>
     </div>
-    <div class="media pair">
+    <div class="media one">
       <button class="vid" data-vid="jackson" data-src="/img/opt/proof/jackson.mp4"><img src="/img/opt/proof/jackson.jpg" alt="Jackson from J&amp;H Landscaping, video review"><span class="play"></span><span class="nm">Review<small>0:24</small></span></button>
-      <figure><img src="/img/opt/testimonial.jpg" alt="Text from Jackson at J&amp;H Landscaping" data-full="/img/opt/testimonial.jpg" loading="lazy"></figure>
     </div>
 </div></section>
 
@@ -294,8 +295,10 @@
 
   // every client text (same list as the results page)
   var RECREATED = 'Recreated from a phone call. Their exact words, but not a real text thread.';
-  var reviews = [['/img/opt/testimonial.jpg'],['/img/opt/text-1.jpg'],['/img/opt/text-2.jpg',RECREATED],
-    ['/img/opt/text-3.jpg',RECREATED],['/img/opt/text-4.jpg'],['/img/opt/text-5.jpg'],['/img/opt/text-6.jpg']];
+  var reviews = [['/img/opt/text-john-ceoc.jpg','John, Colorado Elite Outdoor Contractors'],
+    ['/img/opt/text-2.jpg','John, Colorado Elite Outdoor Contractors. '+RECREATED],
+    ['/img/opt/text-3.jpg','Dakota, Lynnwood Construction. '+RECREATED],
+    ['/img/opt/text-4.jpg'],['/img/opt/text-5.jpg'],['/img/opt/text-6.jpg']];
   var rv=document.getElementById('reviews');
   reviews.forEach(function(r){
     var fig=document.createElement('figure'), img=document.createElement('img');
